@@ -40,10 +40,10 @@ Output: Non so dire in quale categoria classificare l'animale giraffa!
 '''
 
 
-Mammiferi:str = ["cane", "gatto", "cavallo", "elefante", "leone"]
-Rettili:str = ["serpente", "lucertola", "tartaruga", "coccodrillo"]
-Uccelli:str = ["aquila", "pappagallo", "gufo", "falco"]
-Pesci:str = ["squalo", "trota", "salmone", "carpa"]
+Mammiferi:list[str] = ["cane", "gatto", "cavallo", "elefante", "leone"]
+Rettili:list[str] = ["serpente", "lucertola", "tartaruga", "coccodrillo"]
+Uccelli:list[str] = ["aquila", "pappagallo", "gufo", "falco"]
+Pesci:list[str] = ["squalo", "trota", "salmone", "carpa"]
 
 
 print("digita un animale")

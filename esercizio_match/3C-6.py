@@ -64,27 +64,58 @@ Non so dire in quale categoria classificare l'animale drago!
 Non sono in grado di fornire informazioni sull'habitat aria.
 '''
 
+# categoria animali - animal_type
+Mammiferi:list[str] = ["cane", "gatto", "cavallo", "elefante", "leone","balena", "delfino"]
+Rettili:list[str] = ["serpente", "lucertola", "tartaruga", "coccodrillo"]
+Uccelli:list[str] = ["aquila", "pappagallo", "gufo", "falco","cigno","anatra","gallina","tacchino"]
+Pesci:list[str] = ["squalo", "trota", "salmone", "carpa"]
 
-Mammiferi:str = ["cane", "gatto", "cavallo", "elefante", "leone","balena", "delfino"]
-Rettili:str = ["serpente", "lucertola", "tartaruga", "coccodrillo"]
-Uccelli:str = ["aquila", "pappagallo", "gufo", "falco","cigno","anatra","gallina","tacchino"]
-Pesci:str = ["squalo", "trota", "salmone", "carpa"]
-
-
+# categoria habitat - habitat
+Acqua:list[str] = ["balena", "delfino", "lucertola" "tartaruga", "coccodrillo", "serpente", "squalo", "trota", "salmone", "carpa", "cigno","anatra"]
+Terra:list[str] = ["cane", "gatto", "cavallo", "elefante", "leone","serpente", "lucertola","gallina","tacchino"]
+Aria:list[str] = ["aquila", "pappagallo", "gufo", "falco"]
 
 
 print("digita un animale")
-a:str = (str(input()))
+nome:str = (str(input()))
+print("digita il suo habitat")
+habitat:str = (str(input()))
 
-match a:
-    case a if a in Mammiferi:
-        print(a + " appartiene alla categoria dei mammiferi")
-    case a if a in Rettili:
-         print(a + " appartiene alla categoria dei rettili")
-    case a if a in Uccelli:
-        print(a + " appartiene alla categoria degli uccelli")
-    case a if a in Pesci:
-        print(a + " appartiene alla categoria dei pesci")
+match nome:
+    case nome if nome in Mammiferi:
+        print(nome + " appartiene alla categoria dei mammiferi")
+        animal_type:str = "mammiferi"
+    case nome if nome in Rettili:
+         print(nome + " appartiene alla categoria dei rettili")
+         animal_type:str = "rettili"
+    case nome if nome in Uccelli:
+        print(nome + " appartiene alla categoria degli uccelli")
+        animal_type:str = "uccelli"
+    case nome if nome in Pesci:
+        print(nome + " appartiene alla categoria dei pesci")
+        animal_type:str = "pesci"
     case _:
-        print(a + " non appartiene a nessuna gategoria")
+        print(nome + " non appartiene a nessuna gategoria")
+        animal_type:str = "unkown"
 
+my_dictionary:dict[str] = {"nome": nome, "tipo": animal_type, "habitat": habitat }
+
+
+match habitat:
+    case "acqua":
+        if nome in Acqua:
+            print(nome + ", animale della categoria " + animal_type + " può vivere nell'acqua" )
+        else:
+            print("l'habitat non corrisponde o non è verificabile")
+    case "terra":
+        if nome in Terra:
+            print(nome + ", animale della categoria " + animal_type + " può vivere nella terra" )
+        else:
+            print("l'habitat non corrisponde o non è verificabile")
+    case "aria":
+        if nome in Aria:
+            print(nome + ", animale della categoria " + animal_type + " può vivere nell'aria" )
+        else:
+            print("l'habitat non corrisponde o non è verificabile")
+    case _:
+        print("l'habitat non corrisponde o non è verificabile")
