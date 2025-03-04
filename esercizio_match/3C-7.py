@@ -48,9 +48,14 @@ while len(my_list) < 8:
 print(str(testa))
 print(str(croce))
 
+
 risultato_testa:float = (int(testa)/ 8) * 100    # questo è il calcolo della percentuale
 print(str(risultato_testa) + "%")
+
 risultato_croce:float = (int(croce)/ 8) * 100
 print(str(risultato_croce) + "%")
 
 # devi implementare il :.2f per ottenere in output 2 numeri dopo la ,
+
+# es: fatto bene
+print(f"risultato: {risultato_testa:.2f} %")  
