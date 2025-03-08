@@ -22,9 +22,9 @@ Inserisci il mese: 3
 Output: Nessuna festività importante in questa data.
 '''
 
-
+print("digita il giorno")
 giorno:int= int(input())          # RICORDA SEMPRE di specificare sia prima nella "definizione" che dopo nell "input" il TIPO di "variabile" 
-
+print("digita il mese")
 mese:int= int(input())
 
 data:tuple= (giorno,mese)
