@@ -21,3 +21,6 @@ send_messages(my_list,new_list)
 
 print("Messaggi originali:"+str(my_list))
 print("Messaggi inviati:"+ str(new_list))
+
+
+# already done
