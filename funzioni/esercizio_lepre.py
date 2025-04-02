@@ -34,115 +34,86 @@ Requisiti del Codice:
 
 import random
 
-count:int = 0
-my_list:list[str,int] = ['T','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_','_']
-lepre:int = 0
-tartaruga:int = 0
-
-def mossa_tartaruga(n_casuale):
+def mossa_tartaruga(posizione):
     n_casuale = random.randint(1, 10)
-
     if 1 <= n_casuale <= 5:
-        my_list[tartaruga] = '_'
-        tartaruga +=3
-        if tartaruga >70:
-            tartaruga = 70
-        my_list[tartaruga] = 'T'
-        mossa: str ="passo veloce"
-        return mossa
+        posizione = min(70, posizione + 3)  # Passo veloce
+        mossa = "Passo veloce (+3)"
+    elif 6 <= n_casuale <= 7:
+        posizione = max(1, posizione - 6)  # Scivolata
+        mossa = "Scivolata (-6)"
+    else:
+        posizione = min(70, posizione + 1)  # Passo lento
+        mossa = "Passo lento (+1)"
+    return posizione, mossa
 
-    if 6 <= n_casuale <= 7:
-        my_list[tartaruga] = '_'
-        tartaruga -= 6
-        if tartaruga <0:
-            tartaruga = 0
-        my_list[tartaruga] = 'T'
-        mossa: str ="scivolata"
-        return mossa
-
-    if 8 <= n_casuale <= 10:
-        my_list[tartaruga] = '_'
-        tartaruga += 1
-        if tartaruga >70:
-            tartaruga = 70
-        my_list[tartaruga] = 'T'
-        mossa: str ="passo lento"
-        return mossa
-    
-
-def mossa_lepre(n_casuale):
+def mossa_lepre(posizione):
     n_casuale = random.randint(1, 10)
-
     if 1 <= n_casuale <= 2:
-        my_list[lepre] = '_'
-        lepre += 0
-        my_list[lepre] = 'H'
-        mossa:str = "riposo"
-        return mossa
-    
-    if 3 <= n_casuale <= 4:
-        my_list[lepre] = '_'
-        lepre += 9
-        if lepre >70:
-            lepre = 70
-        my_list[lepre] = 'H'
-        mossa:str = "grande balzo"
-        return mossa
-    
-    if n_casuale == 5:
-        my_list[lepre] = '_'
-        lepre -=12
-        if lepre <0:
-            lepre = 0
-        my_list[lepre] = 'H'
-        mossa:str = "grande scivolata"
-        return mossa
-    
-    if 6 <= n_casuale <= 8:
-        my_list[lepre] = '_'
-        lepre += 1
-        if lepre >70:
-            lepre = 70
-        my_list[lepre] = 'H'
-        mossa:str = "piccolo balzo"
-        return mossa
-    
-    if 9 <= n_casuale <= 10:
-        my_list[lepre] = '_'
-        lepre -=2
-        if lepre <0:
-            lepre = 0
-        my_list[lepre] = 'H'
-        mossa:str = "piccola scivolata"
-        return mossa
-    
-def posizioni():
-    posizioneT = my_list.index('T')
-    print("la tartaruga è in posizione" + str(posizioneT))
-    posizioneH = my_list.index('H')
-    print("la lepre è in posizione" + str(posizioneH))
-    print(my_list)
-    
-    
-while my_list[69] == '_':
-    count +=1
-    print("tick n:" + str(count))
+        mossa = "Riposo (0)"
+    elif 3 <= n_casuale <= 4:
+        posizione = min(70, posizione + 9)  # Grande balzo
+        mossa = "Grande balzo (+9)"
+    elif n_casuale == 5:
+        posizione = max(1, posizione - 12)  # Grande scivolata
+        mossa = "Grande scivolata (-12)"
+    elif 6 <= n_casuale <= 8:
+        posizione = min(70, posizione + 1)  # Piccolo balzo
+        mossa = "Piccolo balzo (+1)"
+    else:
+        posizione = max(1, posizione - 2)  # Piccola scivolata
+        mossa = "Piccola scivolata (-2)"
+    return posizione, mossa
 
-    print(mossa_tartaruga())
-    print(mossa_lepre())
+def visualizza_pista(tartaruga, lepre):  # le "funzioni" mossa() riescono a visualizzare le "variabili" tartaruga e lepre (nonostante appartengano che appartengono alla "funzione" gara()) poichè vengono richiamate nella "funzione" in cui sono state inizializzate                   
+    pista = ['_'] * 70  # Inizializza la pista con tutti trattini
+    if tartaruga == lepre:
+        pista[tartaruga - 1] = 'OUCH!!!'  # dato che la "lista" è composta da 70 "elementi" risultano POSIZIONI da 0 a 69
+    else:
+        pista[tartaruga - 1] = 'T'
+        pista[lepre - 1] = 'H'
+    
+    # Costruire la rappresentazione della pista manualmente con un ciclo for
+    rappresentazione = ""   # "stringa" (iniziale) vuota
+    for elemento in pista:
+        rappresentazione += elemento  # Concatenazione manuale dei caratteri (aggiorna "rappresentazione")
+    return rappresentazione   # RAPPRESENTAZIONE è una "stringa" composta da ogni singolo "elemento" della "lista" (aggiunti attraverso il "for")
 
-    print(posizioni())
 
-    if tartaruga == lepre and count != 0:
-        my_list[tartaruga] = 'OUCH!!!'
+def gara():
+    tick:int = 1
+    tartaruga:int = 1
+    lepre:int = 1
+    print("BANG !!!!! AND THEY'RE OFF !!!!!")
 
-    if tartaruga == lepre and my_list[tartaruga]== 'H':
-        print("IT'S A TIE")
+    while tartaruga < 70 and lepre < 70:
 
-    elif my_list[70] == 'T':
-        print("TORTOISE WINS! || VAY!!!")
-    elif my_list[70] == 'H':
-        print("HARE WINS || YUCH!!!")
+        print(tick)
+        tick+=1
+        # Muovere la tartaruga e la lepre
+        tartaruga, mossa_t = mossa_tartaruga(tartaruga)  # qui aggiorno le 2 "variabili" con le 2 "variabili" DEL "return"
+        lepre, mossa_h = mossa_lepre(lepre)
+        
+        # Mostrare la pista
+        pista = visualizza_pista(tartaruga, lepre)
+        print(pista)  # Stampa della pista con trattini
+        
+        # Stampare le mosse
+        print(f"Tartaruga: {mossa_t} | Lepre: {mossa_h}\n")
+        
+        # Controllare il vincitore
+        if tartaruga >= 70 and lepre >= 70:
+            print("IT'S A TIE")
+            break
+        elif tartaruga >= 70:
+            print("TORTOISE WINS! || VAY!!!")
+            break
+        elif lepre >= 70:
+            print("HARE WINS || YUCH!!!")
+            break
+
+# Avviare la gara
+gara()
         
 
     
