@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esercizio Spesa</title>
+    <!-- collegamento al file CSS -->
+    <link rel="stylesheet" href="../esercizio_spesa/spesa.css">
+</head>
+<body>
+    <h1>Lista Spesa</h1>
+    <input type="text" id="itemInput" placeholder="Inserisci un elemento">
+    <button onclick="addItem()">Aggiungi</button>
+    <button onclick="resetList()">Reset</button>
+    
+    <div id="list-container">
+        <ul id="dynamicList">
+            <!-- gli elementi verranno aggiunti qui -->
+        </ul>
+    </div>
+    <!--collegamento al file Javascript-->
+    <script src="../esercizio_spesa/spesa.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+
+#list-container {
+    max-height: 300px; /* Limita l'altezza del contenitore */
+    border: 1px solid #c21818; /* Bordo per maggiore visibilità */
+    padding: 10px;
+}
+
+ul {
+    list-style-type: disc; /* Mostra i punti elenco */
+    padding-left: 20px;
+    margin: 0;
+}
+
+input, button {
+    margin: 5px 0;
+}
+
+button {
+    cursor: pointer;
+}
