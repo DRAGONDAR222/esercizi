@@ -130,7 +130,7 @@ class Professor(Person):
 
     def assign_to_course(self,course_assign:"Course") -> None:
             course_assign.professor = self
-            self.courses.append(course_assign)
+            self.courses.append(course_assign)               # un altro modo sarebbe richiamare direttamente la funzione dell'altra classe (al fine di non entrare in un circolo di recursività bisogna implementare un if statement che verifichi se la modifica sia già avvenuta)
     
     def get_role(self) -> type:                                    
         return self.__class__
