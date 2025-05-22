@@ -1,0 +1,7 @@
+.container {
+    margin: 0; /* Rimuove i margini orizzontali */
+}
+
+.col-3 {
+    padding: 1; /* Rimuove il padding interno delle colonne */
+}
