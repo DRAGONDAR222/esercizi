@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="for"></p>
+    <p id="while"></p>
+
+    <script>
+        let a = parseInt(prompt('Inserisci un numero tra 1 e 10'));
+
+        if (a >= 1 && a <= 10) {
+            let forResult = "Tabellina con for:<br>";
+            let whileResult = "Tabellina con while:<br>";
+
+            for (let i = 1; i <= 10; i++) {
+                forResult += `${a} x ${i} = ${a * i}<br>`;
+            }
+            document.getElementById("for").innerHTML = forResult;
+
+            let i = 1;
+            while (i <= 10) {
+                whileResult += `${a} x ${i} = ${a * i}<br>`;
+                i++;
+            }
+            document.getElementById("while").innerHTML = whileResult;
+        } else {
+            alert("Inserisci un numero valido tra 1 e 10!");
+        }
+    </script>
+    
+</body>
+</html>
+

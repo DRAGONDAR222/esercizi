@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        #contenitore {
+            text-align: center;         
+        }
+    </style>
+</head>
+<body>
+
+    <button onclick="generaLinee()">Genera Linee</button>
+    <div id="contenitore"></div>
+
+    <script>
+        function generaLinee() {
+            let contenitore = document.getElementById("contenitore");
+            contenitore.innerHTML = "";
+
+            for (let i = 0; i <= 100; i += 5) {
+                let linea = document.createElement("hr");
+                linea.style.width = i + "%";
+                contenitore.appendChild(linea);
+            }
+        }
+    </script>
+
+</body>
+</html>

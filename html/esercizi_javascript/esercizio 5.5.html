@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        
+    </style>
+</head>
+<body>
+
+    <button onclick="generaAsterischi()">Genera Asterischi</button>
+    <div id="contenitore"></div>
+
+    <script>
+        function generaAsterischi() {
+            let contenitore = document.getElementById("contenitore");  // la variabile funge da secondo nominativo (modifcandola modifico anche il contenuto del div)
+            contenitore.innerHTML = "";
+
+            for (let i = 10; i <= 30; i++) {
+                let paragrafo = document.createElement("p");
+                paragrafo.textContent = "*".repeat(i);
+                contenitore.appendChild(paragrafo);
+            }
+        }
+    </script>
+
+</body>
+</html>

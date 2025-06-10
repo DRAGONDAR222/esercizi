@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+
+    <input type="number" id="num1">
+    <select id="operazione">
+        <option value="+">+</option>
+        <option value="-">-</option>
+        <option value="*">*</option>
+        <option value="/">/</option>
+    </select>
+    <input type="number" id="num2">
+    <button onclick="calcola()">Calcola</button>
+
+    <p id="risultato"></p>
+
+    <script>
+        function calcola() {
+            let num1 = parseInt(document.getElementById("num1").value);
+            let num2 = parseInt(document.getElementById("num2").value);
+            let operazione = document.getElementById("operazione").value;
+            let risultato;
+
+            if (operazione === "+") {
+                risultato = num1 + num2;
+            } else if (operazione === "-") {
+                risultato = num1 - num2;
+            } else if (operazione === "*") {
+                risultato = num1 * num2;
+            } else if (operazione === "/") {
+                risultato = num2 !== 0 ? num1 / num2 : "Errore";   // condition ? value_if_true : value_if_false
+            }
+
+
+            document.getElementById("risultato").textContent = risultato;
+        }
+    </script>
+
+</body>
+</html>

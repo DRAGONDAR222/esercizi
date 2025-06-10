@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="big"></p>
+    
+    <script>
+        let a = [10, 25, 3, 47, 5, 99, 8];
+        let BigNum = a[0];
+
+        for (let i = 1; i < a.length; i++) {
+            if (a[i] > BigNum) {
+                BigNum = a[i];
+            }
+        }
+
+        document.getElementById("big").innerHTML = `Numero più grande: ${BigNum}`;
+    </script>
+
+</body>
+</html>

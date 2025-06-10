@@ -1,0 +1,19 @@
+scaduto:(i: dataOra): bool
+    precondizioni: nessuna
+    postcondizioni:
+                - L'operazione non modifica il livello estensionale dei dati.
+                - result è definito come segue:
+                    - se this.scadenza <= i allora result = True, altrimenti result = False
+
+
+vincitore:(): Privato
+    precondizioni: 
+                - L'operazione scaduto deve ritornare True
+    postcondizioni:
+                - L'operazione non modifica il livello estensionale dei dati.
+                - Sia p:Privato istanza di Privato
+                - result è definito come segue:
+                    - Sia b:Bid il risultato dell'operazione ultimo_bid(adesso) coinvolto nel link:
+                      bid_ut tale che (p,b)
+                    - result = p
+                

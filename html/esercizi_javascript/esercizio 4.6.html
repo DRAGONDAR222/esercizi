@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="sum"></p>
+    <p id="average"></p>
+    
+    <script>
+        
+        let a = [1,2,3,4,5];
+        let forSum = 0;
+
+        for (let i = 0; i < a.length; i++) {
+            forSum+= a[i];
+            }
+
+        let forAverage = forSum / a.length;
+
+            document.getElementById("sum").innerHTML =`Somma: ${forSum}`;
+            document.getElementById("average").innerHTML =`Media: ${forAverage}`;
+
+    </script>
+</body>
+</html>

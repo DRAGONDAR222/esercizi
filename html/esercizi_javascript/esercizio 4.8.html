@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="pari"></p>
+    <p id="dispari"></p>
+    
+    <script>
+        let a = [10, 25, 3, 47, 5, 99, 8, 1, 5, 20];
+        let pari = 0;
+        let dispari = 0;
+
+        for (let i = 0; i < a.length; i++) {
+            if (a[i] % 2 == 0) {
+                pari++;
+            }else{
+                dispari++;
+            }
+        }
+
+        document.getElementById("pari").innerHTML = `Pari: ${pari}`;
+        document.getElementById("dispari").innerHTML = `Dispari: ${dispari}`;
+    </script>
+
+</body>
+</html>

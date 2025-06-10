@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <style>
+            h1 {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            h3 {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: red;
+        }
+            div {
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+            .spazio {
+            margin-left: 40px; 
+            padding-left: 20px; 
+        }
+    </style>
+</head>
+<body>
+    <!---->
+
+    <h3>ESERCIZIO TRE: INDOVINA IL NUMERO</h3> 
+    
+    <h4>Creare una pagina per il gico di indovina il numero:</h4>
+
+    <br>
+
+    <h1>Gioco: Indovina il numero!</h1>
+
+    <table>
+        <div>
+            <input type="text" name="tentativo" id="tentativo">
+            <button id="bt1">Controlla</button>
+        </div>
+
+        <div>
+            <h5>Tentativi:</h5>
+            <h5 class="spazio">0</h5>
+        </div>
+
+        <div>
+            <form>
+                <button id="bt2" type="reset">Nuovo Gioco</button>
+            </form>
+        </div>
+    </table>
+  
+    <script>
+  // Genera un numero casuale tra 0 e 100 all'avvio della pagina
+  let numeroCasuale = Math.floor(Math.random() * 101);
+  let tentativi = 0;
+
+
+  document.getElementById("bt1").addEventListener("click", function() {
+    // Recupera il valore inserito nel campo di testo
+    let inputVal = document.getElementById("tentativo").value;
+    
+    let numeroTentativo = parseInt(inputVal);
+
+     if (isNaN(numeroTentativo)) {
+    alert("Per favore, inserisci un numero valido!"); 
+  }
+    
+    // Incrementa il contatore dei tentativi e aggiorna la visualizzazione
+    tentativi++;
+    document.querySelector(".spazio").textContent = tentativi;
+
+    
+    
+    if (numeroTentativo < numeroCasuale) {
+      alert("Il tuo numero è troppo piccolo!");
+    } else if (numeroTentativo > numeroCasuale) {
+      alert("Il tuo numero è troppo grande!");
+    } else {
+      alert(`Hai indovinato il numero in ${tentativi} tentativi!`);
+    }
+  });
+
+
+  document.getElementById("bt2").addEventListener("click", function() {
+    // Rigenera il numero casuale e resetta il contatore e il campo di input
+    numeroCasuale = Math.floor(Math.random() * 101);
+    tentativi = 0;
+    document.getElementById("tentativo").value = 0;
+    document.querySelector(".spazio").textContent = tentativi;
+  });
+</script>
+
+    
+</body>
+</html>

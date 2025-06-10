@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <p id="for"></p>
+    <p id="while"></p>
+
+    <script>
+
+        
+            let forResult = "Tabellina con for:<br>";
+            let whileResult = "Tabellina con while:<br>";
+
+            for (let i = 0; i <= 10; i++) {
+                forResult += `${i}<br>`;
+            }
+            document.getElementById("for").innerHTML = forResult;
+
+            let i = 0;
+            while (i <= 10) {
+                whileResult += `${i}<br>`;
+                i++;
+            }
+            document.getElementById("while").innerHTML = whileResult;
+        
+        
+    </script>
+    
+</body>
+</html>
