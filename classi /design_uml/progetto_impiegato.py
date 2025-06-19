@@ -1,10 +1,11 @@
 from __future__ import annotations
 from datetime import *
+from abc import classmethod
 
 class Impiegato:
 
     _data_nascita:date
-    _partecipazioni:dict[Progetto,Partecipa]   # RICORDA
+    _partecipazioni:set[_Partecipa]           #dict[Progetto,_Partecipa]    RICORDA
 
     def __init__(self, nome:str,cognome:str,data_nascita:date,stipendio:float) ->  None:
         self.nome = nome
@@ -25,7 +26,7 @@ class Impiegato:
     def get_stipendio(self) -> float:
         return self.stipendio
     
-    def get_partecipazioni(self) ->  set[Partecipa]:
+    def get_partecipazioni(self) ->  set[_Partecipa]:
         return frozenset(self._partecipazioni)
     
     def set_nome(self,nome:str) -> None:
@@ -37,16 +38,19 @@ class Impiegato:
     def set_stipendio(self,stipendio:float) -> None:
         self.stipendio = stipendio
 
-    def _add_link_partecipa(self, l: Partecipa) -> None:
+    def _add_link_partecipa(self, l: _Partecipa) -> None:
         self._partecipazioni.add(l)
 
-    # def is_coinvolto(self, progetto: Progetto) -> bool:
-    #     return progetto in self._progetti
+    def _remove_link_partecipa(self, l: _Partecipa) -> None:
+        self._partecipazioni.remove(l)
+
+    def is_coinvolto(self, progetto: Progetto) -> bool:
+         return progetto in self._partecipazioni
 
 
 class Progetto:
 
-    _partecipazioni:set[Partecipa]
+    _partecipazioni:set[_Partecipa]
 
     def __init__(self,nome:str,budget:float):
         self.nome = nome
@@ -59,7 +63,7 @@ class Progetto:
     def get_budget(self) -> float:
         return self.budget
     
-    def get_partecipazioni(self) ->  set[Partecipa]:
+    def get_partecipazioni(self) ->  set[_Partecipa]:
         return frozenset(self._partecipazioni)
         
     def set_nome(self,nome:str) -> None:
@@ -68,15 +72,34 @@ class Progetto:
     def set_budget(self,budget:float) -> None:
         self.budget = budget
 
-    def _add_link_partecipa(self, l: Partecipa) -> None:
+    def _add_link_partecipa(self, l: _Partecipa) -> None:
         self._partecipazioni.add(l)
+
+    def _remove_link_partecipa(self, l: _Partecipa) -> None:
+        self._partecipazioni.remove(l)
 
         #crea il remove_link
 
 
 # crea la classe factory per poter eliminare i link: Partecipa       
     
-class Partecipa:
+class Factory:
+
+    @classmethod
+    def create_link(cls,data:date,impiegato:Impiegato,progetto:Progetto) -> None:
+        l:_Partecipa =_Partecipa(data,impiegato,progetto)
+        
+        # aggiungo le partecipazioni nell' init
+
+    @classmethod
+    def delete_link(cls,l:_Partecipa) -> None:
+        if l is None:
+            raise ValueError("il link non può essere None")
+        l.remove_partecipazione()    
+        del l
+
+
+class _Partecipa:
     
     _data_inizio:date
     _impiegato:Impiegato
@@ -109,8 +132,8 @@ class Partecipa:
         
     def remove_partecipazione(self) -> None:
         if self in self.get_impiegato().get_partecipazioni() and self in self.get_progetto().get_partecipazioni():
-            self.get_impiegato()._partecipazioni.remove(self)
-            self.get_progetto()._partecipazioni.remove(self)
+            self.get_impiegato()._remove_link_partecipa(self)
+            self.get_progetto()._remove_link_partecipa(self)
 
         # così facendo mi assicuro che il link possa essere reimplementato in futuro 
 

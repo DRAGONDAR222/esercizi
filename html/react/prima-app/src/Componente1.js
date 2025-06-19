@@ -7,3 +7,5 @@ const componente1 = () => {
 }
 
 export default componente1
+
+
