@@ -1,11 +1,22 @@
 import React from 'react'
 
-const componente1 = () => {
+const Componente1 = (props) => {
+  console.log(props)
   return (
-    <div>componente1</div>
-  )
+    <div>
+      <div>componente1 di: {props.children}</div>
+      <Anagrafica/>
+      <Messaggio/>
+    </div>
+  );
+};
+
+const Anagrafica = () => {
+  return(<div>Anagrafica</div>)
 }
 
-export default componente1
+const Messaggio = () => {
+  return(<div>Messaggio</div>)
+}
 
-
+export default Componente1

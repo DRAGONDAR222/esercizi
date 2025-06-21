@@ -1,24 +1,24 @@
 import React from 'react'
 
-function Stampanumeri2() {
+function Stampanumeri() {
 
     const numeri = [];
-    for (let i = 0; i <= 20; i+= 2) {
+    for (let i = 1; i <= 10; i++) {
         numeri.push(
-            <li>
+            <li key = {i}>
                 {i}
             </li>
         );
     }
 
   return (
-    <div>
-        <h2>Numeri</h2>
+    <>
+        <h2>Numeri da 1 a 10</h2>
         <ul>
             {numeri}
         </ul>
-    </div>
+    </>
   );
 }
 
-export default Stampanumeri2;
+export default Stampanumeri;

@@ -1,14 +1,19 @@
-import React from 'react'
+import React from 'react';
 
 const Clock = (props) => {
-    console.log(props.timezone,props.country)
-    const data= new Date(t);
-    const t=Date.now()+3600*props.timezone*1000;
-  return (
-    <h2>in {props.country} sono le {data.toLocaleTimeString()} del giorno {data.toLocaleDateString()}</h2>
-  )
-}
+  console.log(props.timezone, props.country);
 
-export default Clock
+  const t = Date.now() + 3600 * props.timezone * 1000;
+  const data = new Date(t);
+
+  return (
+    <h3>
+      {props.country}: <b>{data.toLocaleTimeString()}</b> del giorno: <b>{data.toLocaleDateString()}</b>
+    </h3>
+  );
+};
+
+export default Clock;
+
 
  
