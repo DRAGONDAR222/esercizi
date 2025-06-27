@@ -1,0 +1,35 @@
+specififca dello use case Strumenti acquisto
+
+cs_ut = acquista
+
+acquista(
+    p:Privato,
+    c:CompraloSubito): cs_ut
+        precondizioni:
+            - nessuna
+        postcondizione:
+         - crea e restituisce un link (p,c): cs_ut dove p è un oggetto associato a Privato e c è un oggetto associato a CompraloSubito
+
+
+proponiBid(
+    p:Privato,
+    a:Asta): Bid
+    precondizioni:
+
+    postcondizioni:
+        - viene creato un link (p,b): bit_ut 
+        - viene creato un link (b,a): asta_bid
+        - viene creato e restituito b:Bid dove b.privato = p e b.asta = a
+
+privato_feedback(post: PostOggetto, voto: Intero in[0,5], commento:Stringa[0..1]): PostConFeedback:
+- precondizioni:
+    - Se post:Asta allora:
+        - Se post.vincitore() ritorna un ut:Utente, deve essere che ut è associato all'attore che invoca l'operazione
+    - Altrimenti post:CompraloSubito:
+        - Deve esistere (u, cs):cs_ut, dove u è un oggetto della classe u:Privato associato all'attore che invoca l'operazione
+- postcondizioni:
+    - post diventa PostConFeedback, dove gli attributi di post rimangono invariati e si aggiungono:
+        - post.voto = voto
+        - post.commento = commento
+        - post.istante = adesso
+        
