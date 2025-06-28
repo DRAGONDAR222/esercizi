@@ -1,6 +1,8 @@
 from my_tipes.my_general_tipes import *
 from my_tipes.custom_types import *
+from my_tipes.index import *
 from __future__ import annotations
+from typing import Self,Any
 
 class Persona:
     _nome:str
@@ -118,15 +120,49 @@ class Impiegato(Persona):
     _stipendio: FloatGEZ
 
     def __init__(self, nome, cognome, cf, nascita, ruolo:Ruolo, stipendio: FloatGEZ, maternità = None, posizione_militare = None):
+        super().__init__(nome, cognome, cf, nascita, maternità, posizione_militare)
+
         self._stipendio = stipendio
         self._ruolo = ruolo
-        super().__init__(nome, cognome, cf, nascita, maternità, posizione_militare)
 
 
 class Studente(Persona):
     _matricola: IntGEZ
+    _matricole_usate = Index[IntGEZ, Self]("matricole")
 
-    matricole_usate:set[IntGEZ] = set()
+
+    @classmethod
+    def get_indice_matricole(cls) -> Index[IntGEZ, Self]:
+        return cls._matricole_usate
+    
+    @classmethod
+    def get_studenti(cls) -> Generator[Self, None, None]:
+        return cls.get_indice_matricole().all()
+    
+    @classmethod
+    def get_studente(cls, matricola: IntGEZ) -> Self | None:
+        return cls.get_indice_matricole().get(matricola)
+
+        
+
+    def __init__(self, nome, cognome, cf, nascita, matricola: IntGEZ, maternità=None, posizione_militare=None):
+        super().__init__(nome, cognome, cf, nascita, maternità, posizione_militare)
+        self._matricola = matricola
+        self._matricole_usate.add(matricola, self)
+
+    def set_matricola(self, nuova_matricola: IntGEZ) -> None:
+        if self._matricole_usate.get(nuova_matricola) is not None:
+            raise ValueError("Matricola già usata")
+
+        vecchia_matricola = self._matricola
+        self._matricola = nuova_matricola
+
+        self._matricole_usate.remove(vecchia_matricola)
+        self._matricole_usate.add(nuova_matricola, self)
+
+    def get_matricola(self) -> IntGEZ:
+        return self._matricola
+
 
 
 class Progetto:
