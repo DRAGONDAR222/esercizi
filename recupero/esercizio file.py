@@ -107,6 +107,16 @@ class File(Document):
 
     _nomePercorso = '/home/its/Scaricati/programmi - esercizi/recupero/test_esercizio_files'
 
+    def __init__(self, nomeFile: str) -> None:
+        self._nomeFile = nomeFile
+        self._nomeCompleto = f"{self._nomePercorso}/{self._nomeFile}"
+    
+    def leggiTestoDaFile(self) -> None:
+        with open(self._nomeCompleto, 'r') as file:
+            contenuto = file.read()
+            self.setText(contenuto)
 
-    def leggiTestoDaFile(self,file)
+    def getText(self) -> str:
+        return f"Percorso: {self._nomeCompleto}\nContenuto: {self._testo}"
+
         
