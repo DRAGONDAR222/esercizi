@@ -1,7 +1,9 @@
 import React from 'react'
 
-function ProfiloUtente(props) {
+function ProfiloUtente({ utente }) {
+  const { id, nome, cognome, eta, professione, email } = utente;
 
+  
     const handleClick = () => {
         alert(`Dettagli utente:\n\nID: ${id}\nNome: ${nome} ${cognome}\nEtà: ${eta}\nProfessione: ${professione}\nEmail: ${email}`);
     };

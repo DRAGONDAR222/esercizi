@@ -28,6 +28,15 @@ const utente3 = new Utente(3, "Giovanni", "Verdi", 40, "Medico", "giovanni.verdi
 // inserimento nell'array
 let  utenti = [utente1, utente2, utente3];
 
+// divisione in 3 per booststrap
+function dividiInGruppi(array) {
+  const gruppi = [];
+  for (i = 0; i < array.length; i += 3) {
+    gruppi.push(array.slice(i, i + 3)); // i si aggiorna ad ogni ciclo (3,6...)
+  }                 //da(incluso) a (escluso)
+  return gruppi;
+}
+
 
 function App() {
   let nome ="Dario"
@@ -46,7 +55,19 @@ function App() {
       <Stampanumeri2/>
       <br></br>
       <Contatore/>
-      <ProfiloUtente {...utente1} key ={utente1.id}></ProfiloUtente>
+      <br></br>
+
+      <div className="container mt-4">
+        {dividiInGruppi(utenti, 3).map((gruppo, idx) => (
+          <div className="row mb-4" key={idx}>
+            {gruppo.map((utente) => (
+              <div className="col-md-4" key={utente.id}>
+                <ProfiloUtente utente={utente} />
+              </div>
+            ))}
+          </div>
+        ))}
+      </div>
       
       </div>
 
