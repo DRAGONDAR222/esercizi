@@ -6,7 +6,7 @@ import Stampanumeri from './esercizi/Stampanumeri';
 import Stampanumeri2 from './esercizi/Stampanumeri2';
 import Persona from './esercizi/Persona';
 import Contatore from './esercizi/Contatore';
-import ProfiloUtente from './esercizi/profilo_utente/ProfiloUtente';
+import ProfiloUtente from './esercizi/ProfiloUtente';
 
 
 // esercizio ProfiloUtente
