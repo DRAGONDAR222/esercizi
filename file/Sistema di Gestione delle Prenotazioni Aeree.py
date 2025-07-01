@@ -60,21 +60,12 @@ class VoloCommerciale(Volo):
         return self._posti_prima
 
     def posti_disponibili(self) -> dict[str, int]:
-        dict_posti: dict[str, int] = {
-            "posti disponibili": 0,
-            "classe economica": 0,
-            "classe business": 0,
-            "prima classe": 0
-        }
+        dict_posti: dict[str, int] = {"posti disponibili": 0,"classe economica": 0,"classe business": 0,"prima classe": 0}
 
         dict_posti["classe economica"] = self._posti_economica - self._prenotati_economica
         dict_posti["classe business"] = self._posti_buisiness - self._prenotati_buisiness
         dict_posti["prima classe"] = self._posti_prima - self._prenotati_prima
-        dict_posti["posti disponibili"] = (
-            dict_posti["classe economica"] +
-            dict_posti["classe business"] +
-            dict_posti["prima classe"]
-        )
+        dict_posti["posti disponibili"] = (dict_posti["classe economica"] + dict_posti["classe business"] + dict_posti["prima classe"])
 
         return dict_posti
 
