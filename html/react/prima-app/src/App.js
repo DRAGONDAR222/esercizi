@@ -49,7 +49,7 @@ function App() {
       <Clock timezone='-6' country='USA'></Clock>
       <Clock timezone='7' country='Japan'></Clock>
       <br></br>
-      <Persona persona={{ nome: "Marco", cognome: "Rossi", eta: 31 }} />
+      <Persona persona={{ nome: "Marco", cognome: "Togni", eta: 31 }}/>
       <Tabellina numero={5} />
       <Stampanumeri/>
       <Stampanumeri2/>
