@@ -1,0 +1,20 @@
+
+--- TEST VOLO COMMERCIALE 1 ---
+Posti iniziali disponibili: {'posti disponibili': 100, 'classe economica': 70, 'classe business': 20, 'prima classe': 10}
+Posti disponibili dopo prenotazione economica: {'posti disponibili': 30, 'classe economica': 0, 'classe business': 20, 'prima classe': 10}
+Posti disponibili dopo prenotazione business: {'posti disponibili': 10, 'classe economica': 0, 'classe business': 0, 'prima classe': 10}
+Posti disponibili dopo tentativo errato prima classe: {'posti disponibili': 10, 'classe economica': 0, 'classe business': 0, 'prima classe': 10}
+Posti disponibili dopo prenotazione prima classe: {'posti disponibili': 0, 'classe economica': 0, 'classe business': 0, 'prima classe': 0}
+Posti disponibili dopo tentativo su volo pieno: {'posti disponibili': 0, 'classe economica': 0, 'classe business': 0, 'prima classe': 0}
+
+--- TEST VOLO CHARTER ---
+Posti disponibili (iniziali): 50
+Posti disponibili dopo prenotazione: 0
+
+--- TEST VOLO COMMERCIALE 2 ---
+Posti iniziali disponibili: {'posti disponibili': 200, 'classe economica': 140, 'classe business': 40, 'prima classe': 20}
+Posti disponibili dopo prenotazione economica: {'posti disponibili': 150, 'classe economica': 90, 'classe business': 40, 'prima classe': 20}
+
+--- COMPAGNIA AEREA ---
+Flotta della compagnia:
+Guadagno totale della compagnia: €19000.00

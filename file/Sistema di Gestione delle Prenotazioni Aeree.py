@@ -152,10 +152,64 @@ class CompagniaAerea:
             for prima in range(aereo.get_posti_prima() - aereo.posti_disponibili()["prima classe"]):
                 guadagno_totale += (self.get_prezzo_standard() * 3)
         return round(guadagno_totale, 2)
-
-
-        
-
-
-       
     
+
+
+if __name__ == '__main__':
+
+    contenuto = ""
+
+    contenuto += "\n--- TEST VOLO COMMERCIALE 1 ---\n"
+    volo1 = VoloCommerciale("VC100", 100)
+    
+    contenuto += "Posti iniziali disponibili: " + str(volo1.posti_disponibili()) + "\n"
+
+    volo1.prenota_posto(70, "classe economica")
+    contenuto += "Posti disponibili dopo prenotazione economica: " + str(volo1.posti_disponibili()) + "\n"
+
+    volo1.prenota_posto(20, "classe business")
+    contenuto += "Posti disponibili dopo prenotazione business: " + str(volo1.posti_disponibili()) + "\n"
+
+    volo1.prenota_posto(70, "prima classe")
+    contenuto += "Posti disponibili dopo tentativo errato prima classe: " + str(volo1.posti_disponibili()) + "\n"
+
+    volo1.prenota_posto(10, "prima classe")
+    contenuto += "Posti disponibili dopo prenotazione prima classe: " + str(volo1.posti_disponibili()) + "\n"
+
+    volo1.prenota_posto(1, "classe economica")
+    contenuto += "Posti disponibili dopo tentativo su volo pieno: " + str(volo1.posti_disponibili()) + "\n"
+
+    contenuto += "\n--- TEST VOLO CHARTER ---\n"
+    volo_charter = VoloCharter("VC-CH200", 50, 2500.0)
+    
+    contenuto += "Posti disponibili (iniziali): " + str(volo_charter.posti_disponibili()) + "\n"
+    
+    volo_charter.prenota_posto()
+    contenuto += "Posti disponibili dopo prenotazione: " + str(volo_charter.posti_disponibili()) + "\n"
+
+    volo_charter.prenota_posto()  # Tentativo fallito
+
+    contenuto += "\n--- TEST VOLO COMMERCIALE 2 ---\n"
+    volo2 = VoloCommerciale("VC101", 200)
+    
+    contenuto += "Posti iniziali disponibili: " + str(volo2.posti_disponibili()) + "\n"
+    
+    volo2.prenota_posto(50, "classe economica")
+    contenuto += "Posti disponibili dopo prenotazione economica: " + str(volo2.posti_disponibili()) + "\n"
+
+    contenuto += "\n--- COMPAGNIA AEREA ---\n"
+    compagnia = CompagniaAerea("AirPython", 100.0)
+    
+    compagnia.aggiungi_volo(volo1)
+    compagnia.aggiungi_volo(volo2)
+    
+    contenuto += "Flotta della compagnia:\n"
+    compagnia.mostra_flotta()  # stampa solo su terminale, se vuoi salvarla devi cambiare funzione
+
+    guadagno = compagnia.guadagno()
+    contenuto += f"Guadagno totale della compagnia: €{guadagno:.2f}\n"
+
+    print(contenuto)
+
+    with open('/home/its/programmi_esercizi/file/report.txt', 'w') as file:
+        file.write(contenuto)
