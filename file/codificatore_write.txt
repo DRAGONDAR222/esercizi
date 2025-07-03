@@ -1,0 +1,9 @@
+=== Test Cifratore a Scorrimento ===
+Testo in chiaro letto: abcdefghi
+Testo codificato: d
+Testo decodificato: a
+
+=== Test Cifratore a Combinazione ===
+Testo in chiaro letto: abcdefghi
+Testo codificato: aihgfedcb
+Testo decodificato: abcdefghi

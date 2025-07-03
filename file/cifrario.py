@@ -60,6 +60,7 @@ def caesar_cypher_encrypt(s:str, key:int)-> str | None:
                 messaggio += alfabeto[index].upper()
             else:
                 messaggio += elemento
+            return messaggio
 
 def caesar_cypher_decrypt(s:str, key:int)-> str | None:
     messaggio:str = ""
@@ -85,5 +86,6 @@ def caesar_cypher_decrypt(s:str, key:int)-> str | None:
                 messaggio += alfabeto[index].upper()
             else:
                 messaggio += elemento
+            return messaggio
 
     
