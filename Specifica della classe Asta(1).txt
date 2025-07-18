@@ -1,0 +1,92 @@
+Specifica della classe Asta
+
+[V.Asta.scadenzaDopoPubblicazione] La scadenza dell'asta deve essere dopo la sua pubblicazione.
+
+Per ogni oggetto della classe Asta deve essere vero che pubblicazione < scadenza.
+
+Più formalmente:
+Per ogni a:Asta deve essere a.pubblicazione < a.scadenza.
+
+Equivalentemente:
+Non esiste a:Asta tale che a.pubblicazione > a.scadenza.
+
+
+prezzo(i: DataOra): Reale >= 0
+	precondizioni: nessuna.
+	postcondizioni:
+		- L'operazione non modifica il livello estensionale dei dati
+		- Sia B l'insieme dei bid fatti a this fino ad i, formalmente:
+			B è l'insieme dei b:Bid tali che (this,b):asta_bid e b.istante <= i.
+		- Sia N il numero di elementi di B (formalmente, la cardinalità, |B|).
+		- result = this.prezzo + N * this.prezzo_bid
+		
+		
+		
+ultimo_bid(i:DataOra):Bid[0..1]
+
+precondizioni:
+nessuna
+
+postcondizioni:
+L'operazione non modifica il livello estensionale dei dati.
+-Sia B è l'insieme dei b:Bid tali che (this,b):asta_bid e b_istante <= i
+Se B non è vuoto:
+	result = b:bid in B con l'istante massimo
+	
+	
+	
+scaduta(i:DataOra):Boolean
+
+precondizioni:
+nessuna
+
+postcondizioni:
+l'operazione non modifica il livello estensionale dei dati.
+-se this.scadenza <= i result = True altrimenti result = False
+	
+
+	
+vincitore(): Utente[0..1]
+    precondizioni: 
+        - l'operazione this.scaduta con parametro i:adesso deve essere result = True
+    postcondizioni:
+        - L'operazione non modifica il livello estensionale dei dati
+        - Sia p:Privato e b:Bid tale che (p, b):bid_ut e (b, this):asta_bid
+        - result è definito come segue
+            - Sia b:Bid il risultato dell'operazione ultimo_bid(adesso) coinvolto nel link (p, b):bid_ut
+            - result = p
+
+
+# traduzione 1 ad 1 della specifica di analisi
+
+
+
+ultimo_bid(i: datetime): Bid | None
+
+	se |this.asta_bid| == 0: return None
+
+	max_b = None
+	per ogni l in this.asta_bid:
+		se l.bid.istante <= i:
+			se max_b == None:
+					max_b = l.bid
+			altrimenti:
+				se l.bid.istante > max_b.istante:
+					max_b = l.bid
+
+	return max_b
+
+-------------------------------------------------------------------
+
+scaduta(i: datetime): bool
+	se this.scadenza <= i:
+		return False
+	return True
+
+-------------------------------------------------------------------
+
+vincitore(): Utente | None
+	se this.scaduta(adesso):
+		se ultimo_bid(adesso) == None
+			return None
+		return ultimo_bid(adesso).bid_ut.privato

@@ -7,6 +7,10 @@ import Stampanumeri2 from './esercizi/Stampanumeri2';
 import Persona from './esercizi/Persona';
 import Contatore from './esercizi/Contatore';
 import ProfiloUtente from './esercizi/ProfiloUtente';
+import RenderCondizionale from './RenderCondizionale';
+import Hidden from './Hidden';
+import ErsercizioSlide5 from './esercizi/ErsercizioSlide5';
+
 
 
 // esercizio ProfiloUtente
@@ -31,7 +35,7 @@ let  utenti = [utente1, utente2, utente3];
 // divisione in 3 per booststrap
 function dividiInGruppi(array) {
   const gruppi = [];
-  for (i = 0; i < array.length; i += 3) {
+  for (let i = 0; i < array.length; i += 3) {
     gruppi.push(array.slice(i, i + 3)); // i si aggiorna ad ogni ciclo (3,6...)
   }                 //da(incluso) a (escluso)
   return gruppi;
@@ -42,6 +46,8 @@ function App() {
   let nome ="Dario"
   return (
     <div className="App">
+      <br></br>
+      <ErsercizioSlide5/>
       <br></br>
       <Componente1>{nome}</Componente1>
       <h1>Prima app di {nome}</h1>
@@ -68,9 +74,10 @@ function App() {
           </div>
         ))}
       </div>
-      
+      <RenderCondizionale/>
+      <Hidden/>
+      <br></br>
       </div>
-
   );
 }
 

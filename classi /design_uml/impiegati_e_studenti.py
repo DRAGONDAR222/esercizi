@@ -147,7 +147,7 @@ class Studente(Persona):
 
     def __init__(self, nome, cognome, cf, nascita, matricola: IntGEZ, maternità=None, posizione_militare=None):
         super().__init__(nome, cognome, cf, nascita, maternità, posizione_militare)
-        self._matricola = matricola
+        self.set_matricola(matricola)
         self._matricole_usate.add(matricola, self)
 
     def set_matricola(self, nuova_matricola: IntGEZ) -> None:
