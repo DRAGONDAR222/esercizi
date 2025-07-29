@@ -90,3 +90,15 @@ vincitore(): Utente | None
 		se ultimo_bid(adesso) == None
 			return None
 		return ultimo_bid(adesso).bid_ut.privato
+
+-------------------------------------------------------------------
+
+prezzo(i: datetime): RealGEZ
+
+se |this.asta_bid| == 0: return None
+    N:len(this.asta_bid)
+	
+
+	per ogni l in this.asta_bid se l.bid.istante <= i:
+	return this.prezzo + N* this.prezzo_bid
+
