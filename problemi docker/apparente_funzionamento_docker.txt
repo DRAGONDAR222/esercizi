@@ -1,0 +1,60 @@
+its@its-Virtual-Machine:~/vscode_projects/sw_development$ docker compose up --build
+[+] Building 30.2s (18/18) FINISHED                              docker:default
+ => [postgresql internal] load build definition from Dockerfile            0.0s
+ => => transferring dockerfile: 2.45kB                                     0.0s
+ => [dev internal] load build definition from Dockerfile                   0.0s
+ => => transferring dockerfile: 280B                                       0.0s
+ => [dev context basefolder] load .dockerignore                            0.0s
+ => => transferring basefolder: 2B                                         0.0s
+ => [dev internal] load metadata for docker.io/library/python:3.11.11      1.1s
+ => [postgresql internal] load metadata for docker.io/library/postgres:17  1.0s
+ => [postgresql internal] load .dockerignore                               0.0s
+ => => transferring context: 2B                                            0.0s
+ => CACHED [postgresql 1/1] FROM docker.io/library/postgres:17.3-alpine@s  0.0s
+ => [postgresql] exporting to image                                        0.0s
+ => => exporting layers                                                    0.0s
+ => => writing image sha256:8a8cdcfb0fc40a91642e0be29eb1f96699ae030611f50  0.0s
+ => => naming to docker.io/library/its-postgresql                          0.0s
+ => [dev internal] load .dockerignore                                      0.0s
+ => => transferring context: 2B                                            0.0s
+ => [dev context basefolder] load from client                              0.0s
+ => => transferring basefolder: 111B                                       0.0s
+ => [dev stage-0 1/5] FROM docker.io/library/python:3.11.11@sha256:4ca910  0.0s
+ => CACHED [dev stage-0 2/5] COPY --from=basefolder config/ /first-time-c  0.0s
+ => CACHED [dev stage-0 3/5] WORKDIR /first-time-config                    0.0s
+ => [dev stage-0 4/5] RUN bash /first-time-config/dev.sh && rm -rf /firs  26.3s
+ => [postgresql] resolving provenance for metadata file                    0.0s
+ => [dev stage-0 5/5] WORKDIR /home                                        0.1s
+ => [dev] exporting to image                                               2.5s
+ => => exporting layers                                                    2.4s
+ => => writing image sha256:9f861da204dec3153586796cbbb9211e93ac3d2536f78  0.0s
+ => => naming to docker.io/library/its-dev                                 0.0s
+ => [dev] resolving provenance for metadata file                           0.0s
+[+] Running 6/6
+ ✔ dev                       Built                                         0.0s 
+ ✔ postgresql                Built                                         0.0s 
+ ✔ Network its_network       Created                                       0.1s 
+ ✔ Container its_pgadmin     Created                                       0.1s 
+ ✔ Container its_dev         Created                                       0.1s 
+ ✔ Container its_postgresql  Created                                       0.1s 
+Attaching to its_dev, its_pgadmin, its_postgresql
+its_postgresql  | 
+its_postgresql  | PostgreSQL Database directory appears to contain a database; Skipping initialization
+its_postgresql  | 
+its_postgresql  | 2025-08-14 08:44:35.710 UTC [1] LOG:  starting PostgreSQL 17.3 on x86_64-pc-linux-musl, compiled by gcc (Alpine 14.2.0) 14.2.0, 64-bit
+its_postgresql  | 2025-08-14 08:44:35.710 UTC [1] LOG:  listening on IPv4 address "0.0.0.0", port 5432
+its_postgresql  | 2025-08-14 08:44:35.710 UTC [1] LOG:  listening on IPv6 address "::", port 5432
+its_postgresql  | 2025-08-14 08:44:35.721 UTC [1] LOG:  listening on Unix socket "/var/run/postgresql/.s.PGSQL.5432"
+its_postgresql  | 2025-08-14 08:44:35.733 UTC [28] LOG:  database system was shut down at 2025-07-30 10:31:29 UTC
+its_postgresql  | 2025-08-14 08:44:35.745 UTC [1] LOG:  database system is ready to accept connections
+its_pgadmin     | postfix/postlog: starting the Postfix mail system
+its_dev         | Python 3.11.11 (main, Apr  8 2025, 04:27:35) [GCC 12.2.0] on linux
+its_dev         | Type "help", "copyright", "credits" or "license" for more information.
+its_pgadmin     | /venv/lib/python3.12/site-packages/passlib/pwd.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+its_pgadmin     |   import pkg_resources
+its_pgadmin     | [2025-08-14 08:44:41 +0000] [1] [INFO] Starting gunicorn 23.0.0
+its_pgadmin     | [2025-08-14 08:44:41 +0000] [1] [INFO] Listening at: http://[::]:80 (1)
+its_pgadmin     | [2025-08-14 08:44:41 +0000] [1] [INFO] Using worker: gthread
+its_pgadmin     | [2025-08-14 08:44:41 +0000] [88] [INFO] Booting worker with pid: 88
+its_pgadmin     | /venv/lib/python3.12/site-packages/passlib/pwd.py:16: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+its_pgadmin     |   import pkg_resources
