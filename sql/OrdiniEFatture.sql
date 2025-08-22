@@ -3,8 +3,6 @@
 -- \c ordini_e_fatture
 
 
--- Tipi di dato non standard
-
 CREATE DOMAIN Stringa AS varchar(255);
 
 CREATE DOMAIN RealGEZ AS real
