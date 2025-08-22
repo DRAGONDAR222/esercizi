@@ -31,12 +31,11 @@ CREATE TABLE Direttore(
 );
 
 CREATE TABLE Officina(
-    id integer NOT NULL,
+    id integer PRIMARY KEY,
     nome Stringa NOT NULL,
     indirizzo Indirizzo NOT NULL,
     n_dipendenti posinteger NOT NULL,
-    direttore integer NOT NULL,
-    PRIMARY KEY(id, direttore),
+    direttore integer UNIQUE NOT NULL,
     FOREIGN KEY(direttore) REFERENCES Direttore(id)
 );
 
@@ -50,12 +49,12 @@ CREATE TABLE Dipendente(
 CREATE TABLE Persona(
     id integer PRIMARY KEY,
     nome Stringa NOT NULL,
-    cf CodiceFiscale NOT NULL,
+    cf CodiceFiscale NOT NULL UNIQUE,
     indirizzo Indirizzo NOT NULL,
     cell Telefono NOT NULL,
-    proprietario integer,
-    direttore integer,
-    dipendente integer,
+    proprietario integer UNIQUE,
+    direttore integer UNIQUE,
+    dipendente integer UNIQUE,
     FOREIGN KEY(proprietario) REFERENCES Proprietario(id),
     FOREIGN KEY(direttore) REFERENCES Direttore(id),
     FOREIGN KEY(dipendente) REFERENCES Dipendente(id)
@@ -84,11 +83,10 @@ CREATE TABLE Riparazione(
     codice Stringa NOT NULL,
     data_A date NOT NULL,
     ora_A integer NOT NULL,
-    id integer NOT NULL,
-    in_corso integer,
-    terminata integer,
+    id integer PRIMARY KEY,
+    in_corso integer UNIQUE,
+    terminata integer UNIQUE,
     veicolo Targa NOT NULL,
-    PRIMARY KEY(id, veicolo),
     FOREIGN KEY(terminata) REFERENCES Terminata(id),
     FOREIGN KEY(in_corso) REFERENCES In_corso(id),
     FOREIGN KEY(veicolo) REFERENCES Veicolo(targa)
