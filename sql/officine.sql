@@ -1,3 +1,7 @@
+-- create database officine;
+
+-- \c officine
+
 CREATE DOMAIN Stringa AS varchar(255);
 
 CREATE DOMAIN CodiceFiscale AS char(16);
