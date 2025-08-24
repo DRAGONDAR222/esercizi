@@ -1,9 +1,8 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 import UserAlbums from './esercizi/UserAlbums'
 import UserCrud from './esercizi/UserCrud'
+import CardUtente from './esercizi_agosto/esercizio_2/CardUtente'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -12,6 +11,18 @@ function App() {
     <>
     <UserAlbums/>
     <UserCrud></UserCrud>
+    
+      <CardUtente 
+        nome="Mario Rossi" 
+        email="mario.rossi@example.com" 
+        imgUrl="https://placehold.co/200x200"
+      />
+
+      <CardUtente 
+        nome="Laura Verdi" 
+        email="laura.verdi@example.com" 
+        imgUrl="https://placehold.co/200x200"
+      />
     
     </>
   )
