@@ -97,6 +97,7 @@ def analizza_feedback(feedback: list[str]) -> dict:
         if parole_negative == 0 and parole_positive == 0:
             my_dict['neutri'] += 1
 
+    my_dict['totale_commenti'] = len(feedback)
 
     return my_dict
 

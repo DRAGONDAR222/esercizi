@@ -50,14 +50,14 @@ class LibraryManager:
         if title in self.books:
             return f"Errore: il libro esiste già."
         else:
-            self.books[title] = {'authors':authors,'isbn':list[isbn]}
-            return self.books[title]
+            self.books[title] = {'authors':authors,'isbn':[isbn]}
+            return {title:self.books[title]}
         
     def add_author(self,title: str, author: str) -> dict | str:
         if title in self.books:
             if author not in self.books[title]['authors']:
                 self.books[title]['authors'].append(author)
-                return self.books[title]['authors']
+                return {title:self.books[title]}
             else:
                 return "Errore: l'autore esiste già."
         else: 
@@ -67,16 +67,16 @@ class LibraryManager:
         if title in self.books:
             if author in self.books[title]['authors']:
                 self.books[title]['authors'].remove(author)
-                return self.books[title]['authors']
+                return {title:self.books[title]}
             else:
-                return "Errore: l'autore esiste già."
+                return "Errore: l'autore non esiste."
         else: 
             return "Errore: il libro non esiste."
         
     def update_isbn(self,title: str, new_isbn: str) -> dict | str:
         if title in self.books:
             self.books[title]['isbn'][0] = new_isbn
-            return self.books[title]['isbn']
+            return {title:self.books[title]}
         else:
             return "Errore: il libro non esiste."
         
