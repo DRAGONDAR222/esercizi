@@ -24,13 +24,18 @@ where i.ruolo = 'Progettista'
 
 -- Quanti sono i responsabili?
 
-select count(*) 
+select distinct count(*) 
 from impiegato i, progetto prog
 where i.ruolo = 'Progettista'
 and prog.resp_prog = i.persona
 
 -- Quanti sono i progettisti che non sono responsabili? 
--- poi ti faccio sapere
+
+select count(*)
+from impiegato
+where ruolo = 'Proggettista'
+and personanot not in (select distinct resp_prog from progetto)
+
 
 -- Qual è lo stipendio medio dei segretari?
 
@@ -40,7 +45,7 @@ where i.ruolo = 'Segretario'
 
 -- Qual è l'età della/o studente meno giovane?
 
-select min(p.data_nascita) 
+select date_part('year' , age(current_date, min(p.data_nascita))) 
 from studente stud, persona p
 where stud.persona = p.cf
 
@@ -48,9 +53,9 @@ where stud.persona = p.cf
 
 select p.nome
 from impiegato i, persona p
-where p.pos_uomo is not null
+where p.pos_uomo = 'Assolto'
 and p.cf = i.persona
-and i.ruolo = 'Segretario'
+and i.ruolo = 'Direttore'
 
 -- Quanti sono i progetti di cui è responsabile un'impiegata con almeno due figli?
 
@@ -59,4 +64,4 @@ from impiegato i, persona p, progetto prog
 where prog.resp_prog = i.persona
 and p.cf = i.persona
 and i.ruolo = 'Progettista'
-and p.maternita > 2
+and p.maternita => 2
