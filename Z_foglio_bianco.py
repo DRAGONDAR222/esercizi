@@ -1,2 +1,3 @@
+a:str = 'ciao\n'
 
-docker exec -it its_postgresql psql -U postgres
+print(f'{a}cose')
