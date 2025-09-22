@@ -24,7 +24,7 @@ where i.ruolo = 'Progettista'
 
 -- Quanti sono i responsabili?
 
-select distinct count(*) 
+select count(distinct i.persona)
 from impiegato i, progetto prog
 where i.ruolo = 'Progettista'
 and prog.resp_prog = i.persona
@@ -32,9 +32,9 @@ and prog.resp_prog = i.persona
 -- Quanti sono i progettisti che non sono responsabili? 
 
 select count(*)
-from impiegato
-where ruolo = 'Proggettista'
-and personanot not in (select distinct resp_prog from progetto)
+from impiegato i
+where i.ruolo = 'Progettista'
+and i.persona not in (select distinct resp_prog from progetto)
 
 
 -- Qual è lo stipendio medio dei segretari?
@@ -51,7 +51,7 @@ where stud.persona = p.cf
 
 -- Quanti sono i direttori che hanno assolto agli obblighi militari?
 
-select p.nome
+select count(distinct p.cf)
 from impiegato i, persona p
 where p.pos_uomo = 'Assolto'
 and p.cf = i.persona
@@ -64,4 +64,4 @@ from impiegato i, persona p, progetto prog
 where prog.resp_prog = i.persona
 and p.cf = i.persona
 and i.ruolo = 'Progettista'
-and p.maternita => 2
+and p.maternita >= 2
