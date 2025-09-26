@@ -1,3 +1,6 @@
+'''Gli scribi spettrali pretendono energia scandita in segmenti regolari per il rituale. Suddividi la sequenza con `chunk(lst, size)`, spezzando `lst` in sottoliste consecutive di lunghezza `size` (l'ultimo blocco può essere più corto). Mantieni la firma e soddisfa i test.'''
+
+
 def chunk(lst: list[int], size: int) -> list[list[int]]:
     my_list = []
     count = 0
