@@ -13,7 +13,7 @@ import GalleriaFoto from './esercizi_agosto/esercizio_8/GalleriaFoto'
 import ModuloContatti from './esercizi_agosto/esercizio_9/ModuloContatti'
 import BlogApp from './esercizi_agosto/esercizio_10/BlogApp'
 import Render_menu from "./esercizi_agosto/Render_menu";
-
+import TodoApp from './toDoList/TodoApp'
 
 
 function App() {
@@ -52,6 +52,7 @@ function App() {
     <>
       <Render_menu onSetEsercizio={setEsercizio} />
       <div>{renderCondizionale()}</div>
+      <TodoApp></TodoApp>
     </>
   )
 }

@@ -43,8 +43,8 @@ CREATE TABLE PostOggetto(
     commento stringa,
     istante_feedback timestamp,
     id serial primary key,
-    utente stringa not null ,
-    foreign key (utente)
+    pubblica stringa not null ,
+    foreign key (pubblica)
         references Utente(username),
 
     check(
@@ -52,24 +52,20 @@ CREATE TABLE PostOggetto(
                 (
                     (ha_feedback = true)
                     =
-                    (voto is not null)
-                    =
-                    (istante_feedback is not null)
+                    (voto is not null and istante_feedback is not null))                    
                 )
-            or
+            check
                 (
                     not(
                     (ha_feedback = true)
                     =
-                    (voto is not null)
-                    =
-                    (istante_feedback is not null)
+                    (voto is not null and istante_feedback is not null))
                     )
                     and
                     not(commento is not null)
                 )
             )
-        ),
+        
 );
 
 CREATE TABLE MetodiDiPagamento(
