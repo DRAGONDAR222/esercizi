@@ -13,7 +13,7 @@ const Render_menu = ({ onSetEsercizio }) => {
   ];
 
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
+   <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div className="container-fluid">
         <ul className="navbar-nav me-auto mb-2 mb-lg-0 d-flex flex-row">
           {array_esercizi.map((item) => (
