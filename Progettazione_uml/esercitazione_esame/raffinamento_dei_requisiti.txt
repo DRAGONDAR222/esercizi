@@ -58,13 +58,15 @@
 
 999.il sistema deve permettere
 
-    ai responsabili del patrimonio artistico e al management:
+    responsabili
 
-        x999.1. inserimento e rimozione di opere d’arte;
-        x999.2. creazione di un’esposizione, con le opere relative;
-        x999.3. aggiunta di un artista e modifica delle sue informazioni;
-        x999.4. modifica delle informazioni di un’esposizione;
-        x999.5. registrazione della vendita di uno o pi`u biglietti di una certa tipologia e validi per una certa data
-        x999.6. calcolo degli introiti totali per una certa esposizione temporanea, in un dato periodo.
+        x999.1. Inserisce/rimuove opere
+        x999.2. Organizza esposizioni
+        x999.3. Aggiunge/modifica artisti
+        x999.4. Modifica esposizioni
+        x999.5. Registra vendite biglietti
 
+    management
+
+        x999.6. Calcola introiti 
 

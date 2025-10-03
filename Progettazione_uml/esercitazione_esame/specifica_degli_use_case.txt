@@ -1,0 +1,69 @@
+Specifica dello use case Inserisce/rimuove opere
+
+    inserisciOpera(o: Opera): 
+        Precondizioni:
+            - o non è già presente nel sistema
+        Postcondizioni:
+            - o è aggiunta all’insieme delle opere gestite dal museo
+
+    rimuoviOpera(o: Opera): 
+        Precondizioni:
+            - o è presente nel sistema
+        Postcondizioni:
+            - o è rimossa dall’insieme delle opere gestite dal museo
+
+
+
+Specifica dello use case Organizza esposizioni
+
+    organizzaEsposizione(O: opere): 
+        Precondizioni:
+            - O sono già nel sistema
+            - O non sono presenti in altre esposizioni attualmente attive
+        Postcondizioni:
+            - O vengono aggiunte alle opere dell'Esposizione
+
+
+
+Specifica dello use case Aggiunge/modifica artisti
+
+    aggiungeArtista(a: Artista):
+        Precondizioni:
+            - a non è già presente nel sistema
+        Postcondizioni:
+            - a viene aggiunto all'insieme di artisti del museo
+
+    modificaArtista(a: Artista):
+        Precondizioni:
+            - a è già nel sistema
+        Postcondizioni:
+            - a viene modificato e sovrascritto nel sistema
+
+
+Specifica dello use case Modifica esposizioni
+
+    modificaEsposizione(e:Esposizione):
+        Precondizioni:
+            - e è già nel sistema
+        Postcondizioni:
+            - e viene modificato e sovrascritto nel sistema
+
+
+Specifica dello use case Registra vendite biglietti
+
+    registraVendite(B: biglietti, d: date):
+        Precondizioni:
+            - B sono stati venduti in d
+            - B hanno tipologia comune
+        Postcondizioni:
+            - le vendite vengono registrate nel sistema
+
+
+Specifica dello use case Ottiene statistiche
+
+    calcolaIntroiti(e: EsposizioneTemporanea, t: timedelta): reale
+        Precondizioni:
+            - e è un’esposizione temporanea registrata nel sistema
+            - t.inizio <= t.fine
+        Postcondizioni:
+            - result = somma dei prezzi di tutti i biglietti Extended Access venduti per e nel periodo
