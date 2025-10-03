@@ -4,11 +4,25 @@
 // ○ Alla sottomissione del form, chiama handleAddTask con il testo dell'input.
 
 
-import React from 'react'
+import React, { useRef } from 'react'
 
-const TodoForm = () => {
+const TodoForm = ({onAddTask}) => {
+  const textRef=useRef(null);
+  const handleSubmit= (e)=>{
+      e.preventDefault()
+      if(textRef.current.value.trim()){
+        onAddTask(textRef.current.value);
+        textRef.current.value="";
+      }else{
+        alert("Inserisci un task")
+      }
+  }
   return (
-    <div>TodoForm</div>
+    <form className='d-flex mb-3' onSubmit={handleSubmit}>
+      <input type="text" className='form-control me-3' ref={textRef}>
+      </input>
+      <button className="btn btn-primary">Salva task</button>
+    </form>
   )
 }
 

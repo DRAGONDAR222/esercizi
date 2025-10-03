@@ -1,0 +1,43 @@
+
+Biglietto:seleziona_data(d:date) -> date:
+    precondizioni:
+        sia d > current_date
+    postcondizioni:
+        l'operazione non modifica i dati al livello estensionale
+        result = d
+
+
+Standard:calcola_prezzo() -> reale >= 0:
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati livello estensionale
+        siano t.Tariffa e v.Visitatore tali che (t,v):scegli 
+        siano v.Visitatore e b.Biglietto tali che (v,b):acquista
+        result = t.prezzo
+
+
+Extended_acces:calcola_prezzo() -> reale >= 0:
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati livello estensionale
+        siano t.Tariffa e v.Visitatore tali che (t,v):scegli 
+        siano v.Visitatore e b.Biglietto tali che (v,b):acquista
+        sia T l'insieme di t.Temporanea tali che (this,t):da_accesso
+        result = t.prezzo + (T * t.prezzo)
+
+
+Esposizione:esponi_opera(o:Opera):  # nessun result
+    precondizioni:
+        sia o.anno_realizzazione < this.inizio
+    postcondizioni:
+        this.opere += o
+
+
+Temporanea:calcola_intervallo() -> timedelta:
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati al livello estensionale
+        result = this.inizio - this.fine

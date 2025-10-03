@@ -14,7 +14,9 @@ import ModuloContatti from './esercizi_agosto/esercizio_9/ModuloContatti'
 import BlogApp from './esercizi_agosto/esercizio_10/BlogApp'
 import Render_menu from "./esercizi_agosto/Render_menu";
 import TodoApp from './toDoList/TodoApp'
-
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+import MainComponent from './MainComponent'
 
 function App() {
   const [esercizio, setEsercizio] = useState('')
@@ -53,6 +55,7 @@ function App() {
       <Render_menu onSetEsercizio={setEsercizio} />
       <div>{renderCondizionale()}</div>
       <TodoApp></TodoApp>
+      <MainComponent></MainComponent>
     </>
   )
 }

@@ -41,7 +41,7 @@ def codifica(stringa:str,xor:int) -> list[int]:
 
 
 def decodifica(stringa_xor:list[int],xor:int) -> str:
-    stringa_not_xor:list = [i ^ 57 for i in stringa_xor]
+    stringa_not_xor:list = [i ^ xor for i in stringa_xor]
 
     stringa_not_hash:list = [chr(i) for i in stringa_not_xor]
 

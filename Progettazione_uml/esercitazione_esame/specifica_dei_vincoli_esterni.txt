@@ -1,0 +1,19 @@
+[v.da_accesso.PermStand]
+
+per ogni s:Standard e p:Permanente sia (p,s):da_accesso tale che  esista (p,s) tra s e tutti i p
+
+
+[v.Opera.Temporanea.AnnoMinoreInizio]
+
+per ogni o:Opera e t:Temporanea sia (o,t):espone tale che o.anno_realizzazione < t.inizio
+
+
+[v.Biglietto.Esposizione.IstanteMaggioreInizio]
+
+per ogni b:Biglietto e e:Esposizione sia (b,e):da_accesso tale che e.inizio < b.istante_vendita
+
+
+[v.Autore.NascitaMinoreMorte]
+
+dato a:Autore sia a.data_nascita < a.data_morte se esiste
+

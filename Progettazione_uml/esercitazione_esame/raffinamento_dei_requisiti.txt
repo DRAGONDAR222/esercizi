@@ -1,0 +1,70 @@
+1.Opera
+    1.1.nome
+    1.2.categoria 
+    1.3.anno_realizzazione
+    1.4.tecnica [0..1]
+    1.5.correnti  [*]
+
+2.Autore
+    2.1.nome_arte
+    2.2.luogo_nascita
+    2.3.data_nascita
+    2.4.data_morte [0..1]
+    2.5.opere [*]
+
+3.Responsabile
+  
+
+
+4.Esposizione
+    4.1.opere [*]
+    4.2.inizio
+ op 4.3.esponi_opera 
+    
+        4.1.1. Temporanea
+            4.1.1.2.fine
+            4.1.1.3.tema 
+            4.1.1.4.nome 
+            4.1.1.5.prezzo
+         op 4.1.1.6.calcola_intervallo(fine - inizio)
+
+        4.1.2 Permanente
+            4.1.2.1.nome
+
+
+5.Biglietto
+    5.1.istante_vendita
+    5.2.data_valida
+
+        5.1.1.Standard
+            (collegamento Permanente)
+         op 5.1.1.1.CalcolaPrezzo(Tariffa.prezzo)    
+
+        5.1.2.Extended_acces
+            (collegamento Permanente)
+            (collegamento Temporanea)
+         op 5.1.2.1.CalcolaPrezzo(Tariffa.prezzo + Permanente.prezzo per ogni Permanente scelta)
+
+
+6.Tariffa 
+    6.1.nome
+    6.2.prezzo (reale >= 0)
+
+
+7.Visitatore
+
+
+
+
+999.il sistema deve permettere
+
+    ai responsabili del patrimonio artistico e al management:
+
+        x999.1. inserimento e rimozione di opere d’arte;
+        x999.2. creazione di un’esposizione, con le opere relative;
+        x999.3. aggiunta di un artista e modifica delle sue informazioni;
+        x999.4. modifica delle informazioni di un’esposizione;
+        x999.5. registrazione della vendita di uno o pi`u biglietti di una certa tipologia e validi per una certa data
+        x999.6. calcolo degli introiti totali per una certa esposizione temporanea, in un dato periodo.
+
+
