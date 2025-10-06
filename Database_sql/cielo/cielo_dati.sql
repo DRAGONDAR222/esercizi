@@ -55,3 +55,6 @@ INSERT INTO Volo(codice, comp, durataMinuti) VALUES
 
 
 commit;
+
+-- INSERT INTO Compagnia(nome, annofondaz)
+-- VALUES ('SkyDream', '2005');

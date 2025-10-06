@@ -1,8 +1,3 @@
-[v.da_accesso.PermStand]
-
-per ogni s:Standard e p:Permanente sia (p,s):da_accesso tale che  esista (p,s) tra s e tutti i p
-
-
 [v.Opera.Temporanea.AnnoMinoreInizio]
 
 per ogni o:Opera e t:Temporanea sia (o,t):espone tale che o.anno_realizzazione < t.inizio

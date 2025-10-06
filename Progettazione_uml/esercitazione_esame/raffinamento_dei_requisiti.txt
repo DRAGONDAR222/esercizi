@@ -7,7 +7,7 @@
 
 2.Autore
     2.1.nome_arte
-    2.2.luogo_nascita
+    2.2.luogo_nascita (citta/regione/nazione)
     2.3.data_nascita
     2.4.data_morte [0..1]
     2.5.opere [*]
