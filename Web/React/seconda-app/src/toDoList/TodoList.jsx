@@ -4,27 +4,26 @@
 // /> passandogli i dati e le funzioni necessarie.
 
 
-import React from 'react'
-import TodoItem from './TodoItem'
+import React from "react";
+import TodoItem from "./TodoItem";
+import { useTodos } from "./useTodos";
 
-const TodoList = ({ tasks, onDeleteTask, onToggleTask, onUpdateTask }) => {
+const TodoList = () => {
+
+  const {tasks}=useTodos()
   return (
     <ul className="list-group">
-      {
-        tasks.map((t) => {
-          return (
-            <TodoItem
-              key={t.id}
-              task={t}
-              onDeleteTask={onDeleteTask}
-              onToggleTask={onToggleTask}
-              onUpdateTask={onUpdateTask}
-            />
-          )
-        })
-      }
+      {tasks.map((t) => {
+        return (
+          <TodoItem
+            key={t.id}
+            task={t}
+           
+          ></TodoItem>
+        );
+      })}
     </ul>
-  )
-}
+  );
+};
 
-export default TodoList
+export default TodoList;

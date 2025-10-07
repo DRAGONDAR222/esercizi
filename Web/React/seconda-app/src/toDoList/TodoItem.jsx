@@ -8,19 +8,20 @@
 // ○ Aggiungi un bottone "Elimina" che, al onClick, chiami handleDeleteTask
 // con l'id del task.
 
+import React, { useState } from "react";
+import { useTodos } from "./useTodos";
 
-import React, {  useState } from "react";
-
-const TodoItem = ({ task, onDeleteTask, onToggleTask,onUpdateTask}) => {
+const TodoItem = ({ task}) => {
+  const {deleteTask,toggleTask,updateTask}=useTodos();
   const [isEditing, setIsEditing] = useState(false);
-  const [editText,setEditText] = useState(task.text);
+  const [editText, setEditText] = useState(task.text);
   const handleSave = () => {
-    console.log(editText)
-    if(editText.trim()){
-      onUpdateTask(task.id,editText)
-      setIsEditing(false)
-    }else{
-      setIsEditing(false)
+    console.log(editText);
+    if (editText.trim()) {
+      updateTask(task.id, editText);
+      setIsEditing(false);
+    } else {
+      setIsEditing(false);
     }
   };
   return (
@@ -31,20 +32,18 @@ const TodoItem = ({ task, onDeleteTask, onToggleTask,onUpdateTask}) => {
             type="text"
             className="form-control d-inline-block"
             value={editText}
-           onChange={(e)=>setEditText(e.target.value)}
+            onChange={(e) => setEditText(e.target.value)}
             onBlur={handleSave}
-           
             style={{ width: "300px", marginRight: "3px" }}
-            autoFocus
+            addTaskServiceaddTaskService
           ></input>
           <button
             onClick={() => setIsEditing(false)}
             className="btn btn-danger"
-             style={{marginTop: "-6px" }}
+            style={{ marginTop: "-6px" }}
           >
             X
           </button>
-          
         </div>
       ) : (
         <div>
@@ -53,7 +52,7 @@ const TodoItem = ({ task, onDeleteTask, onToggleTask,onUpdateTask}) => {
             className="form-check-input me-2"
             checked={task.completed}
             onChange={() => {
-              onToggleTask(task.id, task.completed);
+              toggleTask(task.id, task.completed);
             }}
           ></input>
           <span
@@ -65,7 +64,7 @@ const TodoItem = ({ task, onDeleteTask, onToggleTask,onUpdateTask}) => {
         </div>
       )}
 
-      <button className="btn btn-danger" onClick={() => onDeleteTask(task.id)}>
+      <button className="btn btn-danger" onClick={() => deleteTask(task.id)}>
         Delete
       </button>
     </li>

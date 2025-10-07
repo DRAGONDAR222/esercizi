@@ -37,67 +37,42 @@
 // necessari come props.
 
 
-import React, { useState, useEffect } from 'react';
-import TodoForm from './TodoForm';
-import TodoList from './TodoList';
-import { fetchTasksService,deleteTaskService,updateTaskService,toggleTaskService,addTaskService} from './api';
+import TodoForm from "./TodoForm";
+import TodoList from "./TodoList";
+import { useTodos } from "./useTodos";
+import { TodoProvider } from "./TodoContext";
 
-const API_URL = 'http://localhost:5340/tasks';
-// comando di avvio server
-// json-server db.json --watch --port 5340
 
+function TodoContent(){
+  const   {tasks,loading,error,deleteTask,toggleTask,addTask,updateTask}=useTodos();
+   if(loading) return <div className="alert alert-info">Sto caricando....</div>
+  if(error) return <div className="alert alert-danger">Errore: {error}</div>
+
+  return (
+ <>
+      <h1>Todolist Cloud</h1>
+      <TodoForm onAddTask={addTask}></TodoForm>
+      <TodoList
+        tasks={tasks}
+        onDeleteTask={deleteTask}
+        onToggleTask={toggleTask}
+        onUpdateTask={updateTask}
+      ></TodoList>
+ </>
+  
+  );
+}
+ 
 const TodoApp = () => {
-    const [tasks, setTasks] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
+  
 
-    const fetchTasks = async () => {
-        try {
-            const data = await fetchTasksService();
-            setTasks(data);
-        } catch (err) {
-            setError(err);
-        } finally {
-            setLoading(false);
-        }
-    };
+  return (
+    <TodoProvider>
 
-    const deleteTask = async (id) => {
-        await deleteTaskService(id)
-        fetchTasks();
-    };
-
-    const updateTask = async (id, text) => {
-        await updateTaskService(id,text)
-        updateTask();
-    }
-
-    const toggleTask = async (id, completed) => {
-        await toggleTaskService(id,completed)
-        toggleTask();
-        fetchTasks();
-    }
-    const addTask = async (text) => {
-        await addTaskService(text)
-        addTask();
-        fetchTasks();
-
-    }
-
-    useEffect(() => {
-        fetchTasks();
-    }, []);
-    return (
-        <div>
-            <h1>Todolist Cloud</h1>
-            <TodoForm onAddTask={addTask}></TodoForm>
-            <TodoList tasks={tasks}
-                onDeleteTask={deleteTask}
-                onToggleTask={toggleTask}
-                onUpdateTask={updateTask}>
-            </TodoList>
-        </div>
-    );
+     <TodoContent></TodoContent>
+ 
+    </TodoProvider>
+  );
 };
 
 export default TodoApp;

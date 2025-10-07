@@ -4,9 +4,12 @@
 // ○ Alla sottomissione del form, chiama handleAddTask con il testo dell'input.
 
 
-import React, { useRef } from 'react'
+import { useRef } from "react";
+import { useTodos } from "./useTodos";
 
-const TodoForm = ({onAddTask}) => {
+
+const TodoForm = () => {
+  const {addTask:onAddTask}=useTodos()
   const textRef=useRef(null);
   const handleSubmit= (e)=>{
       e.preventDefault()
