@@ -66,14 +66,20 @@ def Decifra(C,d,n):
     return pow(C,d,n)
 
 
-M = 'ciao'
-M = int(''.join([str(ord(x)) for x in M]))
 
-# prova a convertire il numero in esadecimale e gestire le coppie
+msg = "Ciao"
+print("\nMessaggio originale:", msg)
 
-C = Cifra(M,e,n)
+# Converti messaggio -> intero
 
-M = Decifra(C,d,n)
+M = int.from_bytes(msg.encode("utf-8"), "big")
+print("Messaggio come intero:", M)
 
 
-# da terminare
+C = Cifra(M, e, n)
+print("Cifrato:", C)
+
+
+M2 = Decifra(C, d, n)
+M2_bytes = M2.to_bytes((M2.bit_length() + 7) // 8, "big")
+print("Decifrato:", M2_bytes.decode("utf-8"))
