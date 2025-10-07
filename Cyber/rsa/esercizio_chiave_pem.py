@@ -77,9 +77,11 @@ print("Messaggio come intero:", M)
 
 
 C = Cifra(M, e, n)
+
 print("Cifrato:", C)
 
 
 M2 = Decifra(C, d, n)
 M2_bytes = M2.to_bytes((M2.bit_length() + 7) // 8, "big")
+
 print("Decifrato:", M2_bytes.decode("utf-8"))

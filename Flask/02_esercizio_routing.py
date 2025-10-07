@@ -18,7 +18,7 @@ def square(n:int) -> str:
 
 @app.route('/sum/<int:a>/<int:b>') 
 def sum_numbers(a:int,b:int) -> str:
-    return f'{a * b}'
+    return f'{a + b}'
 
 
 app.run(debug=True) 
