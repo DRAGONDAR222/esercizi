@@ -17,6 +17,7 @@ import TodoApp from './toDoList/TodoApp'
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min.js';
 import MainComponent from './MainComponent'
+import Checkbox from './esercizio_ottobre/Checkbox'
 
 function App() {
   const [esercizio, setEsercizio] = useState('')
@@ -54,8 +55,13 @@ function App() {
     <>
       <Render_menu onSetEsercizio={setEsercizio} />
       <div>{renderCondizionale()}</div>
-      <TodoApp></TodoApp>
-      <MainComponent></MainComponent>
+      {/* <TodoApp></TodoApp> */}
+      {/* <MainComponent></MainComponent> */}
+      <br />
+      <br />   
+      {/* senza i br Render_menu sovrappone   */}
+      <br />
+      {<Checkbox></Checkbox>}
     </>
   )
 }

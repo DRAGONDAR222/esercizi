@@ -7,9 +7,11 @@ const data = [
   { id: 4, name: "anna" },
 ];
 
+
+// Persona ed Elenco sono componenti creati nel file stesso
+
 const MainComponent = () => {
   const [people, setPeople] = useState(data);
-
   const removePeople = (id) => setPeople(people.filter((el) => el.id !== id));
   return (
     <div>
@@ -22,9 +24,9 @@ const MainComponent = () => {
 const Elenco = ({ people, removePeople }) => {
   return (
     <div>
-      {people.map((el, index) => {
-        return <Persona key={index} {...el} removePeople={removePeople} />;
-      })}
+      {people.map((el) => (
+        <Persona key={el.id} {...el} removePeople={removePeople} />
+      ))}
     </div>
   );
 };
