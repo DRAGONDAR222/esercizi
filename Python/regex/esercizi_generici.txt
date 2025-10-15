@@ -1,0 +1,88 @@
+1. Riconoscere numeri
+Obiettivo: Definire una RegEx che riconosca solo stringhe composte da cifre.
+
+Esercizio 1.1: Scrivi una RegEx che riconosca un numero intero positivo (es. 123, 98765).
+Esercizio 1.2: Modifica la RegEx per accettare anche numeri negativi (es. -45, -1000, 0).
+
+1.1 [1-9][0-9]*
+1.2 -?[0-9]+
+
+
+2. Riconoscere parole
+Obiettivo: Lavorare con lettere e lunghezze di stringhe.
+
+Esercizio 2.1: Scrivi una RegEx che riconosca una parola composta solo da lettere minuscole.
+Esercizio 2.2: Adatta la RegEx per accettare parole con lettere maiuscole e minuscole.
+Esercizio 2.3: Modifica la RegEx per accettare parole lunghe da 5 a 10 caratteri.
+
+2.1 [a-z]+
+2.2 [a-zA-Z]+
+2.3 [a-zA-Z]{5,10}
+
+
+3. Email semplici
+Obiettivo: Definire pattern per email.
+
+Esercizio 3.1: Scrivi una RegEx che riconosca email del tipo nome@dominio.com.
+Esercizio 3.2: Estendi la RegEx per accettare anche domini con più estensioni, es. nome@dominio.co.uk.
+
+3.1 [a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}
+3.2 [a-zA-Z0-9]+@[a-zA-Z0-9.]+\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?
+
+
+4. CAP e codici
+Obiettivo: Lavorare con lunghezze fisse e caratteri misti.
+
+Esercizio 4.1: Definisci una RegEx per un CAP italiano (esattamente 5 cifre).
+Esercizio 4.2: Scrivi una RegEx che riconosca un codice fiscale italiano semplificato: 6 lettere, 2 numeri, 1 lettera, 2 numeri.
+
+4.1 \d{5}
+4.2 [A-Z]{6}\d{2}[A-Z]\d{2}
+
+
+5. Riconoscere date
+Obiettivo: Lavorare con formati numerici separati da caratteri speciali.
+
+Esercizio 5.1: Scrivi una RegEx che riconosca una data nel formato gg/mm/aaaa (es. 09/04/2025).
+Esercizio 5.2: Adatta la RegEx per accettare anche il formato gg-mm-aaaa.
+
+5.1 \d{2}/\d{2}/\d{4}
+5.2 \d{2}[-/]\d{2}[-/]\d{4}
+
+
+6. Codici personalizzati
+Obiettivo: Unire lettere, numeri e caratteri speciali.
+
+Esercizio 6.1: Scrivi una RegEx per identificare un codice prodotto nel formato PROD-1234-XY.
+Esercizio 6.2: Crea una RegEx per un ID alfanumerico di esattamente 8 caratteri, che può contenere lettere maiuscole e numeri (es. AB12CD34).
+
+6.1 PROD-\d{4}-[A-Z]{2}
+6.2 [A-Z0-9]{8}
+
+
+7. Esercizi – Comprensione di RegEx
+Data la RegEx, occorre interpretarla.
+
+Esercizio 7.1: Cosa fa questa RegEx? ^[A-Z][a-z]{2,}$
+Esercizio 7.2: Quali stringhe sono accettate da \d{3}-\d{2}-\d{4}?
+Esercizio 7.3: Qual è l’effetto del simbolo ? in questa RegEx: colou?r
+
+7.1 a partire da una lettera maiuscola, fino a 2 o più lettere minuscole
+7.2 stringhe composte da: 3 numeri iniziali, susseguite da un trattino, susseguite da 2 numeri, susseguite da un trattino, susseguite da 4 numeri
+
+\d{4}?
+Non rende opzionali le 4 cifre, ma fa sì che la ricerca sia meno aggressiva se ci sono più numeri disponibili.
+per far si che siano opzionali bisognerebbe usare \d{0,4}
+
+7.3 la u è opzionale 
+
+
+8. Bonus – Errori comuni
+Obiettivo: Trovare errori in RegEx sbagliate.
+
+Esercizio 8.1: Qual è l’errore nella RegEx ^\d{2,5}?$ se voglio matchare da 2 a 5 cifre?
+Esercizio 8.2: La RegEx [A-z] funziona per lettere? Perché può essere rischiosa?
+
+8.1 bisogna togliere il lazy quindi togliamo il ? finale
+8.2 si, però include anche caratteri esterni all'alfabeto, ovvero: [ \ ] ^ _ 
+
