@@ -1,0 +1,47 @@
+input, button, label {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  font-family: inherit;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+input {
+  padding: 10px 12px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+}
+
+button {
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background-color: #3498db;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+button:hover {
+  background-color: #2980b9;
+  transform: translateY(-1px);
+}
+
+button:active {
+  transform: translateY(0);
+}
+
+label {
+  color: #555;
+  font-weight: 500;
+  margin-bottom: 5px;
+}

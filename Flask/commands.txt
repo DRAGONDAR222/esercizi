@@ -1,0 +1,16 @@
+React: 
+
+comando di avvio:
+npm run dev 
+
+Flask:
+
+comando di avvio:
+python3 main.py
+
+Terminale:
+
+mostra/nascondi terminale:
+ctrl + ò
+
+(poi affianca le 2 istanze spostandone una al lato dell'altra)
