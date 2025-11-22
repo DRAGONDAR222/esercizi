@@ -1,0 +1,40 @@
+Sala:
+
+    [v.filmNonSovrappsoti]
+        import op_ausiliaria:sovrapposti from esposito
+
+        dati this, s:spettacolo e s1:Spettacolo 
+        dove (this,s):sal_spet e (this,s1):sal_spet
+        dove s.data = s1.data
+        sia vero che gli orario di s ed s1 non siano sovrapposti
+
+    [v.PostiNonUguali]
+        dati this p:Posto e p1:Posto 
+        dove (this,p):sal_post e (this,p1):sal_post 
+        sia che non esistano p.fila = p1.fila ed
+        p.colonna = p1.colonna
+
+Posto:
+
+    [v.postoMinoreMax]
+        dati this e s:Sala dove
+        (s,this):sal_post 
+        sia che this.fila < s.max_file e 
+        this.colonna < max_colonne
+
+
+
+Utente:
+
+    [v.prenotazioniMinoriUgualiPosti]
+        per ogni this tale  che esista un link (this,p):prenota 
+        dove p:Posto sia che 
+        dato s:Sala dove (p,s):sal_post 
+        il numero di link sal_post >= al numero di link prenota
+
+
+Spettacolo:
+
+    [v.SpettacoliNonSovrapposti]
+        dati this1 e this2 sia che questi non siano sovrapposti
+        e che dati i loro link (a,s):sped_art abbiano a:Artista diversi

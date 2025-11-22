@@ -1,0 +1,45 @@
+1.Sede
+    1.1.nome
+    1.2.indirizzo
+    1.3. rel req 2 [0..*]
+
+2.Sala
+    2.1. rel req 4 [1..*]
+    2.2.numero
+    2.3.rel req 3 [0..*]
+    2.4.max_file
+    2.5.max_colonne
+
+3.Posto
+    3.1.fila
+    3.2.colonna
+
+    3.1.1.Posto prenotato
+
+
+4.Spettacolo    
+    4.1.titolo
+    4.2.tipologia [concerto,rappresentazione teatrale, film]
+    4.3.genere
+    4.4. rel req 5 [1..*]
+    4.5.data
+    4.6.orario_inizio
+    4.7.orario_fine
+
+
+5.Artista
+    5.1.nome
+
+
+999.1. prenota_posti(num_posti:intero,s:Spettacolo): -> p:Posto[0..*]
+    ritorno un numero di posti non prenotati in base a num_posti
+
+999.2. consulta_spettacoli(d:data,tipologia:tipologia, genere:stringa):-> s:Spettacolo[0..*]
+    ritorna l'insieme di spettacoli che corrispondono a quel giorno,genere e tipologia
+
+999.3. ricevi_suggerimenti(s:Spettacolo,d:data):-> s:Spettacolo[0..*]
+    ritorna l'insieme di spettacoli con stesso genere di s inclusi tra d e d + 7 giorni
+
+
+
+[da modificare + aggiunta 1 use case]

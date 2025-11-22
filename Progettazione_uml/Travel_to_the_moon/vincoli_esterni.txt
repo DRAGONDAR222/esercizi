@@ -1,0 +1,38 @@
+
+import sovrapposti (scrivo tutto il vincolo)
+
+Crociera
+
+    [v.DestinazioniSequenziali]
+        per ogni link (d,this):croc_dest
+        dati 2 link (d,this) e (d1,this)
+        siano (d,this).arrivo < (d1,this).partenza
+
+
+    [v.DesrinazioniNonSovrapposte]
+        per ogni link (d,this):croc_dest 
+        dati 2 link (d,this) e (d1,this) questi non siano sovrapposti
+
+Nave
+
+    [v.unaCrocieraPerNave]
+        dati 2 link (c,this):croc_nav e (c1,this):croc_nav questi non siano sovrapposti
+
+
+Itinerario
+
+    [v.crociereOrdinate] 
+        dati 2 link (this,c):it_croc e (this,c1):it_croc 
+        siano c:Crociera e c1:Crociera non sovrapposte
+
+    [v.CrociereNonPreData]
+        per ogni link (this,c):it_croc sia che c.inizio >= this.data
+
+
+Prenotazione
+
+    [v.num_postiMinoreDisponibili]
+        dati this, c:Crociera e n:Nave dove
+        (this,c):pren_croc
+        (c,n):croc_nav
+        sia che n.disponibili() >= this.num_posti

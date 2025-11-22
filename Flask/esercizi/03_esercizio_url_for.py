@@ -49,10 +49,23 @@ def show_userprofile(username: str) -> str:
     
 #-------------
 
-@app.route('/blog')
-def blog() -> str:
-    pass
+@app.route('/posts/<int:id>')
+def post_article(id: int) -> str:
 
+    testo: str = f'<p>In soli tre anni, l utente {id}, 28 anni, è passato da scattare foto con il suo vecchio smartphone durante le passeggiate in montagna a esporre le sue opere in gallerie internazionali.\nIl giovane fotografo di Torino è oggi considerato una delle voci più autentiche dell’arte ambientale contemporanea.</p>'
+    my_dict:dict = {id: testo}
+    return my_dict[id]
+
+
+posts:list[int] = [1,2,3,4]
+
+@app.route('/posts')
+def posts_page() -> str:
+
+    str_out:str = '<h2>Elenco posts fittizi</h2>'
+    for post in posts:
+        str_out += (post_article(post) + f'\n url: {url_for('post_article', post)}')
+    return str_out
 
 
 

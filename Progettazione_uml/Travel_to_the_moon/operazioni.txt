@@ -1,0 +1,38 @@
+import compresa (scrivo tutto il vincolo)
+
+Nave
+
+    disponibili(): -> intero
+        dati p:Prenotazione, c:Crociera e this dove
+            (p,c):pren_croc
+            (c,this):croc_nav
+        sia P l'insieme di p:prenotazione
+        sia result la sottrazione tra this.max_pass e 
+        la somma di tutti p.num_posti di P
+
+
+Use Case
+
+    PrenotaPosto(p:Prenotazione,c:Crociera) -> booleano
+        sia p.instante < c.data_inizio
+        se c.disponibili() < p.num_posti 
+        result è uguale a False altrimenti 
+        result è uguale a True
+
+
+    EtàMedia(i:Data,f:Data) -> intero
+        per ogni link (p,c):pren_croc dove dato d:Destinazione sia che
+        (c,d):croc_dest e che d.continente sia =/= da Europa
+        sia cl:Cliente tale che (cl,p):clie_pren 
+        sia c:Crociera compresa tra [i,f]
+        sia |CL| la cardinalità dell'insieme CL per ogni cl
+        sia per ogni cl in CL sia E la somma di cl.età 
+        sia result = E / |CL|
+
+
+    isGettonata(inizio:Data,fine:Data) -> d:Destinazione[0..*]
+        per ogni d:Destinazione e c:Crociera dove (c,d):croc_dest e
+        c è compreso in [inizio,fine]
+        sia D l'insieme di d coinvolti in almeno 10 link (c,d) tale che c:Luna_di_miele oppure
+        coinvolti in almeno 15 link (c,d) tale che c:Famiglia
+        sia result = D

@@ -1,0 +1,27 @@
+1 (aeroporto) arrivo e partenza non dono uguali
+[v.arDiversoPart]
+
+    dati v:volo, a1:Aeroportovo e a2:Aeroporto
+    dati 2 link (v,a1):partenza e (v,a2):arrivo
+    sia vero che a1 sia diverso da a2 
+
+
+2 arrivo maggiore partenza
+[v.arMaggiorePart]
+
+    dati a:Aeroporto e v:Volo
+    sia vero che dati 2 link (a,v):arrivo e (a,v):partenza
+    arrivo.istante > partenza.istante
+
+4 aereo non può essere contemporaneo in 2 voli diversi
+
+    import op_ausiliaria:sovrapposti from esposito
+
+    dati v1:Volo, v2:Volo e a:Aereo 
+    dati 4 link (v1,ar):arrivo, (v2,ar):arrivo, (v1,ar):partenza e (v2,ar):partenza
+    sia vero che 
+    esistano i link (v1,a):aer_vol e (v2,a):aer_vol,
+    v1 sia diverso da v2 e che
+    [(v1,ar):partenza.istante,(v1,ar):arrivo.istante] e
+    [(v2,ar):partenza.istante,(v2,ar):arrivo.istante]
+    non siano sovrapposti

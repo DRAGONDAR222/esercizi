@@ -1,0 +1,33 @@
+import sovrapposti from Esposito
+
+Persona:
+
+    [v.attivitaNonSovrapposte]:
+        sia che this non abbia più r:Ricovero o p:Prestazione sovrapposti
+
+Ricovero:
+
+    [v.pazienteNonMedicoDiSeStesso]:
+        dati m:Medico e p:Paziente
+        tali che (p,this):paz_ric e (m,this):med_ric
+        sia m diverso da p
+
+
+    [v.inizioPrimaFine]:
+        se esiste this.fine
+        sia this.inizio < this.fine
+
+Prestazione:
+
+    [v.medicoAbbiaSpecializzazione]:
+        dati m:Medico, s:Secondaria oppure s:Primaria e s1:Specializzazione
+        tale che (this,m):med_prest e (m,s):med_sec oppure med_prim
+        sia this.specializzazione uguale a s.tipo
+
+Letto:
+
+    [v.RicoveriNonSovrapposti]:
+        dati r1:Ricovero e r2:Ricovero
+        sia che this non abbia più link (this,r):ric_let sovrappsoti
+
+

@@ -1,0 +1,62 @@
+1.Utente 
+    1.1.nome 
+    1.2.cognome
+    1.3.email
+    1.4.citta (cit,reg,naz)
+    1.5.data_iscrizione
+
+        1.1.1.Organizzatore
+        op organizza_viaggio()
+
+2.Viaggio
+    2.1.nome
+    2.2.min_part
+    2.3.max_part
+    rel molti a molti req.3
+
+3.Semplice
+    3.1.nome
+    3.2.inizio
+    3.3.fine
+    3.4.prezzo
+    3.5.rel uno a molti req.4
+    3.6.descrizione
+    3.7.tipo [enum]
+
+4.Luogo
+    4.1.indirizzo
+    4.2.citta (cit,reg,naz)
+
+5.Attivita_composta
+    rel molti a molti req.3 
+        5/7.partecipanti [vincoloEsterno]
+    5.1.nome
+
+6.Spostamento
+    6.1.l_partenza
+    6.2.l_arrivo
+    6.3.tipo
+
+
+7.Attivita
+    7.1.1. req 3
+    7.1.2. req 6
+
+
+
+999.1. Dato un viaggio e un utente che vi partecipa, calcolare il numero di attivit`a del viaggio
+    di tipo “spostamento” alle quali ha preso parte.
+
+999.2. Dato un viaggio, ottenere gli utenti che hanno partecipato al viaggio e che hanno preso
+    parte al maggior numero di attivit`a organizzate in esso.
+
+999.3. I responsabili del sistema, data una nazione, devono poter calcolare, per ognuna delle
+    sue regioni, la/e citt`a toccata/e dal maggior numero di viaggi.
+
+999.4. Data un’attivit`a, calcolare il numero di utenti che vi ha preso parte.
+
+999.5. Dato un viaggio, ottenere la/e attivit`a organizzata/e in esso alla/e quale/i ha preso
+    parte il maggior numero di utenti.
+    
+999.6. Data una citt`a di destinazione, per ognuno dei 12 mesi dell’anno, calcolare il numero
+    di viaggi organizzati in tale mese nell’ultimo anno solare, in tale citt`a.

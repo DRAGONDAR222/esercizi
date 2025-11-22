@@ -1,0 +1,91 @@
+1.Crociera
+    1.1.codice {id}
+    1.2.data_inizio
+    1.3.data_fine
+    1.4. rel req Nave [1..1]
+    1.5. rel req Destinazione [1..*] 
+        1.5.1.arrivo
+        1.5.2.partenza
+
+            [v.DestinazioniSequenziali]
+            [v.DesrinazioniNonSovrapposte]
+
+                                {disj,compl}
+    1.1.1.Luna_di_miele
+                                {disj,compl}
+        1.1.1.1.1. tradizionale
+            [v.DestinazioniRomanticheMaggioreUgualeDivertenti]
+
+        1.1.1.1.2. alternativa
+            [v.DestinazioniDivertentiMaggioreUgualeRomantiche]
+        
+    1.1.2.Famiglia
+        1.1.2.1.bambini: booleano
+
+
+2.Nave
+    2.1.nome {id}
+    2.2.comfort int3_5
+    2.3.max_pass
+    2.4.disponibili(): -> intero  per ogni prenotazione max_pass - num_posti
+        
+        [v.unaCrocieraPerNave] 
+
+3.Itinerario
+    3.1.nome {id}
+    3.2. rel req Crociera [1..*]
+    3.3.data
+    
+
+    [v.crociereOrdinate] crociere non sovrapposte  
+    [v.CrociereNonPreData] crociere non minori di this.data 
+
+4.Destinazione
+    4.1.nome {id}
+    4.2.continente
+    4.3. rel Posti_da_vedere [0..*]
+                                        {compl}
+    4.1.1.Romantica
+
+    4.1.2.Divertente
+
+5.Posti_da_vedere
+    5.1.nome 
+    5.2.descrizione
+    5.3.fascia_inizio:Ora
+    5.4.fascia_fine:Ora
+
+
+6.Cliente
+    6.1.nome
+    6.2.cognome
+    6.3.età
+    6.4.indirizzo
+    6.5. rel req Prenotazione [0..*]
+
+7.Prenotazione
+    7.1.instante
+    7.2.num_posti
+    7.3. rel req Crociera [1..1]
+
+    [v.num_postiMinoreDisponibili] this.num_posti < n.disponibili()
+
+
+999.1. PrenotaPosto(p:Prenotazione,c:Crociera) -> booleano
+    sia p.instante < c.data_inizio
+    se c.disponibili() < p.num_posti ritorna False
+
+999.2. EtàMedia(i:Data,f:Data) -> intero
+    per ogni link (p,c):pren_croc dove dato d:Destinazione sia che
+    (c,d):croc_dest e che d.continente sia =/= da Europa
+    sia cl:Cliente tale che (cl,p):clie_pren 
+    sia c:Crociera compresa tra [i,f]
+    ritorna la media di ogni cl.età
+
+
+999.3. isGettonata(inizio:Data,fine:Data) -> d:Destinazione[0..*]
+    per ogni d:Destinazione e c:Crociera dove (c,d):croc_dest e
+    c è compreso in [inizio,fine]
+    sia Dl l'insieme di d coinvolti in almeno 10 link (c,d) tale che c:Luna_di_miele
+    sia Df l'insieme di d coinvolti in almeno 15 link (c,d) tale che c:Famiglia
+    sia result = Dl + Dfb

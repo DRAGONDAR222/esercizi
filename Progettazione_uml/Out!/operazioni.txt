@@ -1,0 +1,37 @@
+use case
+
+    prenota_posti(num_posti:intero): -> p:Posto[0..*]
+        precondizioni:
+            nessuna
+        postcondizioni:
+            dato s, sal:Sala, p:Posto
+            siano (s,sal):sal_spet, (s,p):sal_post
+            sia P l'insieme di posti
+            sia result un insieme di P 
+            tale che non sia P:Posto_prenotato
+            equivalente a num_posti
+
+            
+            (successivamente gli ogetti di result diventano p:Posto_prenotato)
+            
+
+
+    consulta_spettacoli(d:data,tipologia:tipologia, genere:stringa):-> s:Spettacolo[0..*]
+        precondizioni:
+            nessuna
+        postcondizioni:
+            sia result l'insieme di S:Spettacolo tale che 
+            per ogni s in S sia vero che
+            s.genere = genere 
+            s.tipologia = tipologia
+            s.data = data
+
+
+    ricevi_suggerimenti(s:Spettacolo,d:data):-> s:Spettacolo[0..*]
+        precondizioni:
+            nessuna
+        postcondizioni:
+            sia result l'insieme di S:Spettacolo tale che
+            per ogni spet in S sia vero che
+            spet.data in [d,d +7]
+            spet.genere = s.genere

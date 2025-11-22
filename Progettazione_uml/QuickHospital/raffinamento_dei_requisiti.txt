@@ -1,0 +1,79 @@
+0.Persona
+    0.1.nome
+    0.2.cognome
+    0.3.nascita 
+
+    1/3 sottocategorie
+
+1.Paziente
+    1.1.recapito_email {id}
+    1.2. rel req 3 {id} (uno ad uno)
+    1.2. rel req 2 (uno a molti)
+
+    11 sottocategoria
+
+2.Recapito telefonico
+    2.1.numero
+
+3.Recapito_postale
+    3.1.via
+    3.2.civico
+    3.3.cap
+
+4.Medico
+    4.1 operazione ottieni_intinerario(d:dataOra): -> S:Stanza (maiusc = insieme)
+        per ogni suo paziente se non già presente, aggiungo (s.piano,s.settore) di s:Stanza  tratta da (s,p) a result
+        poi ritorno result ordinando i dati prima per stanza e poi per settore
+    4.2. rel req 9 (uno a molti)
+    4.3. rel req 10 (uno a uno)
+
+5.Stanza
+    5.1.piano
+    5.2.settore
+
+jolly.Letto
+    j.1.posto
+
+6.Ricovero
+    6.1 operazione Verifica_disponibilità(d:dataOra): -> l:Letto
+            per ogni stanza nell'Ospedale almeno una stanza abbia un posto letto disponibile in giorno dataOra
+            una stanza può essere collegata a massimo 8 pazienti
+    6.2. il paziente ricoverato rel req 1 (uno ad uno)
+    6.3. il medico responsabile rel req 4 (uno ad uno)
+    6.4.inizio
+    6.5.fine [0..1]
+    6.6. rel req 5 (uno ad uno)
+
+    [v.inizioPrimaFine]
+
+    [v.pazienteNonMedicoDiSeStesso]
+    
+
+7.Prestazione
+    7.1. rel req 1 (uno a uno)
+    7.2. rel req 2 (uno a uno)
+    7.3.specializzazione_richiesta
+    7.4.descrizione
+    7.5.data_richiesta
+
+    [v.medicoAbbiaSpecializzazione]
+
+
+8.Specializzazione
+    8.1.tipo
+
+9.Secondaria
+
+10.Primaria
+
+11.Esterno
+
+999.1. assisti_richiesta
+    Data una prestazione richiesta da un paziente esterno (per una specializzazione s), il
+    sistema deve restituire l’insieme dei medici maggiormente idonei a soddisfarla. Il criterio
+    di idoneità è il seguente: se esistono medici con specializzazione primaria pari ad s, il
+    risultato è l’insieme di tali medici. Altrimenti, il risultato è l’insieme dei medici che hanno
+    s tra le loro specializzazioni secondarie
+
+
+[da modificare leggermente - implementa aggiunte...]

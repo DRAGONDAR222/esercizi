@@ -1,0 +1,68 @@
+n_spostamenti(u:utente,v:Viaggio): intero >= 0
+
+    precondizioni:
+        esista un link (u,v):partecipa
+    postcondizioni:
+        l'operazione non modifica i dati
+        sia ac:Attivita_Composta tale che (ac,v):viag_comp
+        sia a:Spostamento tale che (ac,a): att_comp
+        sia A il modulo di a
+        result è uguale al |A| tale che ogni att_comp di A abbia un link (at,u):partecipanti
+
+
+best_utenti(v:Viaggio): U:Utente
+
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati
+        sia U:Utente l'insieme di utenti che hanno un link (u,v):partecipa
+        sia ac:Attivita_Composta tale che (ac,v):viag_comp
+        sia a:Attivita tale che (ac,a): att_comp
+        sia A il modulo di a
+        per ogni u in U si consideri n(u) =  numero di link (at,u)
+        result corrisponde ai u il cui n risulta massimo rispetto agli altri
+
+
+most_visited(r:Regione): C:Citta
+
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati
+        sia C l’insieme di c:Citta tali che (r,c):cit_reg
+        per ogni c in C si consideri n(c) il numero di link (v,c):destinazione
+        result è l’insieme di c in C tali che n(c) sia massimo rispetto agli altri
+
+
+
+n_partecipanti(a:Attivita):intero >= 0
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati
+        result è uguale al |L|:partecipanti che includuno A
+
+best_att(v:Viaggio): A:Attivita
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati
+        sia ac:Attivita_Composta tale che (ac,v):viag_comp
+        sia a:Attivita tale che (ac,a): att_comp
+        sia A il modulo di a:Attivita 
+        sia L: il modulo dei link (at,u):partecipanti tale che (a,ac):at di a 
+        result è uguale all'insieme di a tali che at abbia il maggior |L| rispetto agli altri
+
+
+stat_viaggio(c:Citta): 
+    precondizioni:
+        nessuna
+    postcondizioni:
+        l'operazione non modifica i dati
+        sia V l’insieme di v:Viaggio tali che (v,c):destinazione
+        sia M l’insieme dei 12 mesi dell’anno
+        per ogni m in M si consideri n(m) il numero di v in V tali che
+            v è stato organizzato nel mese m
+            e v appartiene all’ultimo anno solare
+        result è l’insieme delle coppie (m, n(m)) con m in M
