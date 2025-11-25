@@ -1,0 +1,6 @@
+html -> tag (suddivisione della pagina tipo html)
+css -> selettori, css base
+js -> obj, array, pspread, destrutt, dom, eventi, asincrone, valore, riferimento
+
+react -> jsx, useState, useEffect, useRef, useContext, Route, render condizionale, props, callback
+
