@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--22. Filtro Condizionale
+Richiesto: mostrare solo gli oggetti che rispettano due condizioni (categoria e prezzo).
+Usare: filter con condizioni multiple.
+Risultato: elenco dei prodotti filtrati.-->
+
+<body>
+    <script>
+        const cose = [
+            {nome: "Anna", cognome: "Bianchi"},
+            {nome:"Cuffie", categoria: "Elettronica", prezzo: 50}
+        ];
+
+        const prodotti = cose.filter(e =>{
+            return e.categoria && e.prezzo;
+        });
+
+        console.log(prodotti);
+    </script>
+</body>
+</html>

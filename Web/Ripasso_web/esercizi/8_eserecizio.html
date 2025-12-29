@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dati Oggetto</title>
+</head>
+
+<!--8. Dati Oggetto in Frase
+Richiesto: prendere un oggetto JS e mostrarne le proprietà in una frase strutturata.
+Usare: template literal, inserimento nel DOM.
+Risultato: frase leggibile es. "Modello: Fiat Panda (1990)".-->
+
+<body>
+
+    <p id="frase"></p>
+
+    <script>
+        const auto = { modello: "Fiat Panda", anno: 1990 };
+        document.getElementById("frase").textContent =
+            `Modello: ${auto.modello} (${auto.anno})`;
+    </script>
+
+</body>
+</html>

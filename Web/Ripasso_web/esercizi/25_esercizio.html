@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--25. Promise Simulata
+Richiesto: simulare recupero dati dopo un ritardo.
+Usare: Promise, timeout.
+Risultato: testo che compare dopo alcuni secondi.-->
+
+<body>
+    <script>
+        const ritardo = new Promise((resolve, reject) => {
+            setTimeout(() => {
+                resolve("Dati caricati dopo 3 secondi");
+            }, 3000);
+        });
+
+        ritardo.then(console.log);
+
+    </script>
+</body>
+</html>

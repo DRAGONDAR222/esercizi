@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Sidebar Layout</title>
+    <link rel="stylesheet" href="../css/13_esercizio.css">
+
+    <style>
+        .layout {
+            display: flex;
+        }
+        .sidebar {
+            width: 200px;
+            padding: 20px;
+            border: 1px solid black;
+        }
+        .main {
+            flex: 1;
+            padding: 20px;
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+
+<!--13. Layout Sidebar + Contenuto
+Richiesto: struttura a due colonne, sidebar fissa e área contenuti flessibile.
+Usare: flexbox, larghezza fissa per sidebar, flessibilità per main.
+Risultato: layout tipico da pannello admin con menu laterale.-->
+
+<body>
+    <div class="layout">
+        <aside class="sidebar">Sidebar</aside>
+        <main class="main">Contenuti principali</main>
+    </div>
+</body>
+</html>

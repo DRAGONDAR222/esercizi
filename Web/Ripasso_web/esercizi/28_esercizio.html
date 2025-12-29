@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--28. Lista Utenti da API
+Richiesto: ottenere elenco utenti remoto e mostrarlo come lista.
+Usare: fetch, cicli, creazione nodi DOM.
+Risultato: lista di nomi completa ordinata-->
+
+<body>
+    <h2>utenti</h2>
+    <ul id="utenti"></ul>
+
+    <script>
+
+    const URL_BASE = "https://jsonplaceholder.typicode.com/users"
+    const ul = document.getElementById("utenti")
+
+    async function funzione() {
+        try {
+            const response = await fetch(URL_BASE);
+            const data = await response.json();
+            data.forEach(e => {
+                const li = document.createElement("li")
+                li.innerHTML = e.name
+                ul.appendChild(li)
+            });
+        } catch (err) {
+            console.error("Errore:", err);
+        }
+    }
+    funzione();
+
+
+    </script>
+    
+</body>
+</html>

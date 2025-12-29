@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--2. Lista Stilizzata
+Richiesto: creare una lista ul con 4 elementi. Il 2° e il 4° devono avere stile diverso (bordo, colore
+sfondo, grassetto).
+Usare: selettore CSS nth-child, proprietà di bordo, sfondo, font-weight.
+Risultato: lista verticale dove alcuni elementi risultano evidenziati-->
+
+<style>
+        li:nth-child(2),
+        li:nth-child(4) {
+            border: 1px solid black;
+            background: lightgray;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Elemento 1</li>
+        <li>Elemento 2</li>
+        <li>Elemento 3</li>
+        <li>Elemento 4</li>
+    </ul>
+</body>
+</html>

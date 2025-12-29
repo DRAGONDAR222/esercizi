@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--24. Media Totale con Map + Reduce
+Richiesto: media dei voti per studente e media generale.
+Usare: map per singole medie e reduce per media finale.
+Risultato: valore unico che rappresenta la media complessiva.-->
+
+<body>
+    <script>
+        const studenti = [
+            { nome: "Mario", voti: [7, 8, 6] },
+            { nome: "Anna", voti: [9, 7, 8] },
+            { nome: "Luca", voti: [6, 6, 7] }
+        ];
+
+        const medieStudenti = studenti.map(studente => {
+            const somma = studente.voti.reduce((acc, voto) => acc + voto, 0);
+            const media = somma / studente.voti.length;
+            return { nome: studente.nome, media: media };
+        });
+
+        console.log("Medie studenti:", medieStudenti);
+
+        const mediaGenerale = medieStudenti.reduce((acc, s) => acc + s.media, 0) / medieStudenti.length;
+
+        console.log("Media generale:", mediaGenerale);
+    </script>
+</body>
+</html>

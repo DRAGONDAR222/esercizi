@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--30. Dashboard con Conteggi
+Richiesto: contare elementi completati e non completati.
+Usare: filter per due insiemi distinti.
+Risultato: dashboard con due valori numerici separati-->
+
+<body>
+    <script>
+        const tasks = [
+            { id: 1, title: "Comprare il pane", completed: true },
+            { id: 2, title: "Studiare JavaScript", completed: false },
+            { id: 3, title: "Allenarsi", completed: true },
+            { id: 4, title: "Fare la spesa", completed: false }
+        ];
+
+        const complete = tasks.filter(t => t.completed).length;
+        const incomplete = tasks.filter(t => !t.completed).length;
+
+        console.log("Completate:", complete);
+        console.log("Non completate:", incomplete);
+
+    </script>
+    
+</body>
+</html>

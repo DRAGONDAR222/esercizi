@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Destrutturazione Oggetto</title>
+    <link rel="stylesheet" href="../css/16_esercizio.css">
+</head>
+
+<!--16. Destrutturazione Oggetto Annidato
+Richiesto: estrarre valori da un oggetto con proprietà interne.
+Usare: destrutturazione oggetto con proprietà annidate.
+Risultato: variabili pronte all’uso contenenti dati estratti.-->
+
+<body>
+    <script>
+        const persona = { nome: "Mario", indirizzo: { città: "Roma", cap: "00100" } };
+        const { nome, indirizzo: { città, cap } } = persona;
+        console.log(nome, città, cap);
+    </script>
+</body>
+</html>

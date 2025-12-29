@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Header Flexbox</title>
+    <link rel="stylesheet" href="../css/11_esercizio.css">
+
+    <style>
+        .header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+            background-color: #eee;
+            }
+        .icons span {
+                margin-left: 15px;
+                cursor: pointer;
+            }
+
+    </style>
+
+</head>
+
+<!--11. Header con Flexbox
+Richiesto: barra superiore con logo a sinistra e gruppo di icone a destra.
+Usare: display:flex, justify-content:space-between, allineamenti.
+Risultato: header equilibrato e coerente su un’unica riga.-->
+
+<body>
+    <header class="header">
+        <div class="logo">LOGO</div>
+        <div class="icons">
+            <span>🔔</span>
+            <span>⚙️</span>
+            <span>👤</span>
+        </div>
+    </header>
+</body>
+</html>

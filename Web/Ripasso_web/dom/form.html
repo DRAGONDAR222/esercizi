@@ -1,0 +1,48 @@
+<form id="mioForm">
+  <input type="text" name="nome" placeholder="Inserisci il nome">
+  <button type="submit">Invia</button>
+</form>
+
+<script>
+  const form1 = document.getElementById("mioForm");
+
+  form1.addEventListener("submit", function(e) {
+    e.preventDefault(); // blocca l'invio “vero”
+    console.log(form1.elements["nome"].value); // prende il valore del campo
+  });
+</script>
+
+<!----------------------------------------------->
+
+<form id="login">
+  <input type="text" name="utente">
+  <input type="password" name="password">
+  <button type="submit">Entra</button>
+</form>
+
+<script>
+  const form2 = document.getElementById("login");
+
+  form2.addEventListener("submit", function(e) {
+    e.preventDefault();
+    console.log(form2.elements["utente"].value);
+    console.log(form2.elements["password"].value);
+  });
+</script>
+
+
+<!--DEFINIZIONI
+
+FORM
+
+Un form è la struttura che permette all’utente
+di inserire informazioni in una pagina web.
+
+ELEMENTS
+ 
+elements è una proprietà dei form HTML che contiene tutti i campi del form
+(input, select, textarea, button), permettendo di accedervi facilmente 
+tramite nome o indice.
+ 
+ 
+ -->

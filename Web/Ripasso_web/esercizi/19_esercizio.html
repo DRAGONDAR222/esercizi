@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Copia Oggetto</title>
+    <link rel="stylesheet" href="../css/19_esercizio.css">
+</head>
+
+<!--19. Copia e Modifica Oggetto
+Richiesto: creare un nuovo oggetto basato su uno esistente modificando solo alcune proprietà.
+Usare: spread operator su oggetti.
+Risultato: oggetto modificato senza alterare l’originale.-->
+
+<body>
+    <script>
+        const originale = { nome: "Mario", età: 30 };
+        const copia = { ...originale, età: 31 };
+        console.log(originale, copia);
+    </script>
+</body>
+</html>

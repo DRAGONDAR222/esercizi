@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--23. Calcolo Saldo con Reduce
+Richiesto: calcolare un saldo da entrate e uscite.
+Usare: reduce su array di movimenti.
+Risultato: valore totale come risultato finale.-->
+
+<body>
+    <script>
+        const movimenti = [
+            { tipo: "entrata", importo: 100 },
+            { tipo: "uscita", importo: 30 },
+            { tipo: "entrata", importo: 20 }
+        ];
+
+        const saldo = movimenti.reduce((acc, e) => {
+            if (e.tipo === "entrata") {
+                return acc + e.importo;
+            } else {
+                return acc - e.importo;
+            }
+        }, 0);
+
+        console.log(saldo);
+    </script>
+</body>
+</html>

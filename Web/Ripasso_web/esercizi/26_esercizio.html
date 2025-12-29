@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--26. Recupero Dati con Fetch
+Richiesto: ottenere dati da API ed esibirli in pagina.
+Usare: fetch e parsing JSON.
+Risultato: titolo e contenuto mostrati nel layout-->
+
+<body>
+
+<h2>Utenti:</h2>
+<ul id="lista-utenti"></ul>
+
+    <script>
+        const URL_BASE = "https://jsonplaceholder.typicode.com/users"
+        const ul = document.getElementById("lista-utenti");
+
+        fetch(URL_BASE)
+        .then(response => response.json()) // converte in JSON
+        .then(data => {
+            data.forEach(user => {
+                const li = document.createElement("li");
+                li.textContent = `nome: ${user.name}, cognome: ${user.username}`; 
+                ul.appendChild(li);
+             });
+        })
+        .catch(err => console.error("Errore:", err));
+
+
+    </script>
+</body>
+</html>

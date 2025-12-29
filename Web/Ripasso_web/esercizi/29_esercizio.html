@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!--29. Promise.all per Chiamate Multiple
+Richiesto: ottenere post e commenti contemporaneamente.
+Usare: Promise.all.
+Risultato: dati aggregati visibili insieme-->
+
+<body>
+    <script>
+
+        const post_url = "https://jsonplaceholder.typicode.com/posts"
+        const comment_url = "https://jsonplaceholder.typicode.com/comments"
+
+
+async function caricaDati() {
+    try {
+
+        const [posts, comments] = await Promise.all([
+            fetch(post_url).then(res => res.json()),
+            fetch(comment_url).then(res => res.json())
+        ]);
+
+        console.log("Posts:", posts);
+        console.log("Comments:", comments);
+
+        } catch (err) {
+        console.error("Errore:", err);
+    }
+}
+
+caricaDati();
+
+    </script>
+</body>
+</html>

@@ -145,7 +145,7 @@ def add_animal():
         }
     }), 200
 
-@app.post("/animals/<animals_id>/adopt")
+@app.post("/animals/<animal_id>/adopt")
 def animal_adopted(animal_id):
     animale = rifugio.get(animal_id)
     if animale is None:

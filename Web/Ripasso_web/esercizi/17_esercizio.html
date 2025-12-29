@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scambio Variabili</title>
+    <link rel="stylesheet" href="../css/17_esercizio.css">
+</head>
+
+<!--17. Scambio Variabili
+Richiesto: invertire i valori di due variabili.
+Usare: destrutturazione di array in una riga.
+Risultato: valori scambiati senza variabili temporanee.-->
+
+<body>
+    <script>
+        let a = 5, b = 10;
+        [a, b] = [b, a];
+        console.log(a, b); // 10 5
+    </script>
+</body>
+</html>
