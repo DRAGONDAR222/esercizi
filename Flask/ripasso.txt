@@ -1,0 +1,9 @@
+studia fino alla slide 23 
+
+domande a crocette + aperte   3px
+
+route flask             4px
+
+requests                3px
+
+guarda soluzioni, ricorda di fare un semlice print per quanto riguarda le requests
