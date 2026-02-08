@@ -43,14 +43,12 @@ where p.posizione = 'Professore'
 -- decrescente. Per ogni attività, restituire l’id, il tipo e il
 -- numero di ore. [3 punti]
 
-select ap.tipo, count(distinct ap.id), sum(ap.oreDurata)
-from AttivitàProgetto ap 
-join persona p
-    on p.id = ap.persona
-where p.id = 1
-    and ap.progetto = 4
-group by ap.tipo, 
-order by ap.id desc
+select ap.id, ap.tipo, ap.oreDurata
+from AttivitàProgetto ap
+where ap.persona = 1
+  and ap.progetto = 4
+order by ap.oreDurata desc;
+
 
 -- 7. Quanti sono i giorni di assenza per tipo e per persona. Per
 -- ogni persona e tipo di assenza, restituire nome, cognome,
@@ -97,8 +95,7 @@ select p.id, p.nome
 from persona p 
 left join assenza a
     on p.id = a.persona
+    and a.id is null 
 where a.tipo = 'Chiusura Universitaria'
-    and a.id = null 
-
 
 -- non testate

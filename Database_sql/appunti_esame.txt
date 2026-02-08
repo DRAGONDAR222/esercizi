@@ -1,0 +1,39 @@
+durante una ristrutturazione da uml_ristrutturato a sql 
+nel caso avessimo una relazione 
+
+   A 1..1 <--> 1..* B
+
+gestiamo la cosa come se fosse un classico 1..1 <--> 0..* 
+mettendo la fk nel lato * poi aggiungiamo una scritta per indicare 
+la presenza di un vincolo di ennupla del tipo:
+
+    [V.incl.b]
+        Per ogni A deve esistere almeno un B collegato.
+
+(siccome abbiamo 1..1 il parametro in lato * sarà NOT NULL)
+
+---------------------
+
+nel caso avessimo una relazione is_a:
+
+    A 1..1 {id1} <--> 0..* B
+
+dove B ha già un attributo {id} questo diventa {id2} NON {id1}
+poichè il ruolo da pk è stato già preso dall'attributo di associazione 
+
+se invece non fosse una relazione is_a
+
+dobbiamo mettere entrambi gli attributi come pk 
+    OPPURE
+aggiungiamo un attributo id che diventa pk {id1}
+e facciamo diventare i 2 precedenti unique {id2}
+
+-----------------
+
+unique va nell'attributo di fk solo nei casi in cui abbiamo:
+
+    1..1 <--> 0..1    ( + NOT NULL)
+    0..1 <--> 0..1    
+    (1..1 <--> 1..1) improbabile
+
+Lo * elimina il unique
