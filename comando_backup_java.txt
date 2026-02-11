@@ -1,0 +1,3 @@
+comando che copia (backup) tutto il contenuto della attuale work-space di eclipse nella cartella java (vista da intellij)
+
+rsync -av --exclude='.idea' ~/eclipse-workspace/ ~/vscode_projects/programmi_esercizi/Java/
